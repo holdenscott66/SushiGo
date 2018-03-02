@@ -18,7 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-
+// CHECK LINES BETWEEN 258 AND 265
 
 //if you want user events you need the eventHandler<ActionEvent> at the end of the class
 public class GUI extends Application {
@@ -29,6 +29,8 @@ public class GUI extends Application {
 		launch(args);
 		
 	}
+	
+	
 	Stage window;
 	Scene scene1, scene2, scene3, scene4, scene5, scene6;
 	
@@ -47,13 +49,8 @@ public class GUI extends Application {
 	Button buttonCards;
 	
 	private GameConfiguration game;
-	
-	public GUI() {
-		
-		game = new GameConfiguration(1, 2);
-		
-	}
-
+	private Player[] players;
+	int numPlayers;
 	
 
 	/*
@@ -163,6 +160,15 @@ public class GUI extends Application {
 		
 		twoPlayerButton = new Button();
 			twoPlayerButton.setText("Two Players");
+			 game = new GameConfiguration(1, 2);
+	      //  new GamePlay(G1);
+			
+			
+		//	players = game.getPlayers();
+		//	numPlayers = players.length;
+			
+			
+			
 			twoPlayerButton.setOnAction(e -> window.setScene(scene5));
 			
 			twoPlayerButton.setTranslateY(-100);
@@ -171,13 +177,16 @@ public class GUI extends Application {
 		threePlayerButton = new Button();
 			threePlayerButton.setText("Three Players");
 			threePlayerButton.setOnAction(e -> window.setScene(scene5));
-			
 			threePlayerButton.setTranslateY(-50);
 			
 			
 		fourPlayerButton = new Button();
 			fourPlayerButton.setText("Four Players");
+			game = new GameConfiguration(1, 4);
+			
+			
 			fourPlayerButton.setOnAction(e -> window.setScene(scene5));
+			
 			
 		
 			fourPlayerButton.setTranslateY(0);
@@ -219,45 +228,59 @@ public class GUI extends Application {
 			ImageView view1 = null;
 		    boolean buttonClicked = false;
 		    HBox plantedCard = null;
-		//	ImageView fD = null;
-			
+		   
+
 			
 			for (int i = 0; i < game.getHand(0).size(); i++) {
 				ImageView view;
 				view = new ImageView(game.getHand(0).get(i) + ".png");
+				
+				
 				buttonCards = new Button(null, view);
 				buttonCards.setText(game.getHand(0).get(i));
-				
-				//move the button to the middle while forcing the change to height and width
-				//delete the button
-					
+			
 			   
 				
 			    buttonCards.setOnAction((e-> {
-			    	
+			    		String cardPlayed;
 			    		SimpleBooleanProperty isDisabled = new SimpleBooleanProperty();
 			    		
 			    		isDisabled.setValue(true);
 			    
 		            ((Button)(e.getSource())).setTranslateX(150);
 		            ((Button)(e.getSource())).setTranslateY(-250);
-		            
-		            
 		            ((Button)(e.getSource())).disableProperty().bind(isDisabled);
 		            ((Button)(e.getSource())).setAlignment(Pos.BASELINE_RIGHT);
-		      
-		            	
 		            
-		          //  view.remove(players[playerNum].cardPlayed());
+		            
+		            
+		            
+		            cardPlayed = ((Button)(e.getSource())).getText();
+		            game.getHand(0).remove(cardPlayed);
+		 
+		            game.updateHand(0,1);
+		            System.out.println(game.getHand(0));
+		            
+		            if(game.getHand(0).size() != 10) {
+		            	window.setScene(scene4);
+		            
+		            }
 		            
 		            view.setFitWidth(50);
 		            view.setFitHeight(100);
 		            
 		            
 		            
+		            
+		            
+		            
+		            
+		            
+		            
 			    }));
-					
-		            	
+				
+			    
+			   
 		            //should be something like game.getHand("NEXT PLAYER IN CLOCKWISE DIRECITON).size()
 		            
 		            
@@ -279,10 +302,11 @@ public class GUI extends Application {
 				boxPic.getChildren().addAll(buttonCards);
 
 			}
+	//	}
 
 		layout5.getChildren().addAll(Background,boxPic);
 		
-		Label label1 = new Label("Your turn!");
+
 		
 		scene5 = new Scene(layout5, 1366, 766);
 		
@@ -293,6 +317,9 @@ public class GUI extends Application {
 		window.setScene(scene1);
 		window.show();
 	}
+			
+	}
+
 
 			
 			
@@ -300,4 +327,6 @@ public class GUI extends Application {
 	
 	
 	
-}
+
+	
+	
