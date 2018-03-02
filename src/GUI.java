@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -18,17 +19,16 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
 
-/*
-* personal notes: play button skips straight into the play area just for faster testing
-* the for loop that creates the flipped cards was screwing with the buttons so it's been removed temporarily 
-*
-*
-*/
-
 
 //if you want user events you need the eventHandler<ActionEvent> at the end of the class
 public class GUI extends Application {
 
+	
+	public static void main(String[] args) {
+		
+		launch(args);
+		
+	}
 	Stage window;
 	Scene scene1, scene2, scene3, scene4, scene5, scene6;
 	
@@ -56,13 +56,16 @@ public class GUI extends Application {
 
 	
 
-	
-	//	  ImageView viewCard1 = new ImageView(new Image(game.getHand(0)+ ".png"));
-	 //   ImageView viewCard2 = new ImageView(new Image(cards.get(1) + ".png"));
-	 //   ImageView viewCard3 = new ImageView(new Image(cards.get(2) + ".png"));
-	    
-	
-	
+	/*
+	for (int i = 0; i < game.getHand(1).size(); i++) {
+		System.out.println(game.getHand(1).get(i));
+		fD = new ImageView("FaceDown.png");
+		fD.setFitWidth(100);
+		fD.setFitHeight(150);
+		FaceDown.getChildren().add(fD);
+		}
+
+	*/
 	
 	
 	public void start(Stage primaryStage) throws Exception {
@@ -212,29 +215,61 @@ public class GUI extends Application {
 		
 	
 			
-			ImageView view = null;
+		 // ImageView view = null;
+			ImageView view1 = null;
+		    boolean buttonClicked = false;
+		    HBox plantedCard = null;
 		//	ImageView fD = null;
 			
 			
 			for (int i = 0; i < game.getHand(0).size(); i++) {
+				ImageView view;
 				view = new ImageView(game.getHand(0).get(i) + ".png");
 				buttonCards = new Button(null, view);
 				buttonCards.setText(game.getHand(0).get(i));
-				buttonCards.setMaxWidth(100);
 				
 				//move the button to the middle while forcing the change to height and width
 				//delete the button
 					
 			   
 				
-			    buttonCards.setOnAction((e)-> {
+			    buttonCards.setOnAction((e-> {
 			    	
-			    	System.out.println("Button pressed " + ((Button) e.getSource()).getText());
-				
-			    	
-			    	
-			    	
-			    });
+			    		SimpleBooleanProperty isDisabled = new SimpleBooleanProperty();
+			    		
+			    		isDisabled.setValue(true);
+			    
+		            ((Button)(e.getSource())).setTranslateX(150);
+		            ((Button)(e.getSource())).setTranslateY(-250);
+		            
+		            
+		            ((Button)(e.getSource())).disableProperty().bind(isDisabled);
+		            ((Button)(e.getSource())).setAlignment(Pos.BASELINE_RIGHT);
+		      
+		            	
+		            
+		          //  view.remove(players[playerNum].cardPlayed());
+		            
+		            view.setFitWidth(50);
+		            view.setFitHeight(100);
+		            
+		            
+		            
+			    }));
+					
+		            	
+		            //should be something like game.getHand("NEXT PLAYER IN CLOCKWISE DIRECITON).size()
+		            
+		            
+		            /*
+		            for (int j = 0; i < game.getHand(1).size(); j++) {
+						view1 = new ImageView(game.getHand(0).get(j) + ".png");
+						buttonCards = new Button(null, view);
+						buttonCards.setText(game.getHand(0).get(j));
+						buttonCards.setMaxWidth(100);
+		            }
+			    		*/
+			   
 				
 				view.setFitWidth(100);
 				view.setFitHeight(150);
@@ -244,15 +279,7 @@ public class GUI extends Application {
 				boxPic.getChildren().addAll(buttonCards);
 
 			}
-			/*
-			for (int i = 0; i < game.getHand(1).size(); i++) {
-				System.out.println(game.getHand(1).get(i));
-				fD = new ImageView("FaceDown.png");
-				fD.setFitWidth(100);
-				fD.setFitHeight(150);
-				FaceDown.getChildren().add(fD);
-				}
-			*/
+
 		layout5.getChildren().addAll(Background,boxPic);
 		
 		Label label1 = new Label("Your turn!");
