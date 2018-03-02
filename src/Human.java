@@ -11,6 +11,7 @@ public class Human extends Player {
 	private int playerID;
 	private Hashtable<String, Integer> board = new Hashtable();
 	public static final String PLAYER_NAME = "Player ";
+	private int score = 0;
 	
 	public Human() {
 		playerID = 1;
@@ -58,6 +59,14 @@ public class Human extends Player {
 	
 	public Hashtable<String,Integer> getBoard() {
 		return board;
+	}
+	
+	public void updateScore(int add) {
+		score += add;
+	}
+	
+	public int getScore() {
+		return score;
 	}
 	
 	public String cardPlayed() {

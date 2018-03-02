@@ -7,7 +7,7 @@ import java.util.*;
 */
 
 public class Deck {
-
+	// instance variables
 	private LinkedList<String> deckOfCards;
 	private LinkedList<String>[] hands;
 	private Random randCard;
@@ -65,8 +65,8 @@ public class Deck {
 	*setHand method used to create a hand from the deck
 	*Cards from the deck are taken at random, and once the card is
 	*added to the hand, the card is removed from the deck
-	*Takes in no parameters
-	*@return the hand used to play the game
+	*@param numHandsnumber      number of type int of hands to be created 
+	*@return hnds    an array of Linked lists containing the number of hands specified
 	*/
 	
 	public LinkedList<String>[] setHand(int numHands){

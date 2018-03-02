@@ -7,6 +7,7 @@ public class EasyComputer extends Player{
 	private Hashtable<String, Integer> board = new Hashtable();
 	private Random randNum;
 	public static final String PLAYER_NAME = "Computer ";
+	private int score = 0;
 	
 	/**
 	*The getPossibleMoves method is the getter for the possibleMoves
@@ -69,6 +70,14 @@ public class EasyComputer extends Player{
 	*The method cardPlayed just returns the card that is played
 	*@return 	the card that is chosen to be placed on the board
 	*/
+	
+	public void updateScore(int add) {
+		score += add;
+	}
+	
+	public int getScore() {
+		return score;
+	}
 	
 	public String cardPlayed() {
 		return card;

@@ -14,23 +14,19 @@ import java.util.*;
 */
 
 public class FinalScore {
+	//variables
+	
 	Hashtable<String, Integer>[] boards;
 
 	/**
-	*The method FinalScore takes in the player's specific boards where the cards they choose to
-	*keep are stored.
-	*This method calls on the card scoring methods to come up with a finalScore and prints the
-	*final score beside the player it belongs to.
-	*This method does not return anything
-	*
+	
+	
+	*The FinalScore constructor takes the payers boards and creates an array of hashtables
+	*calls calcScore method for each player
 	*@param game	This is the game object that is created from the GameConfiguration class
-	*		This parameter is used to refer to the player's board and to be able to 
+	*		This parameter is used to refer to the players and their boards and to be able to 
 	*		compare the current player's board against their opponent to calculate
 	*		special card scores that rely on comparing boards
-	*
-	*@param player	This is the player object from the game object that is used to determine
-	*		the player number so that their boards can be assigned and compared 
-	*		accurately
 	*/
 	
 	public FinalScore(GameConfiguration game) {
@@ -44,6 +40,11 @@ public class FinalScore {
 		}
 	}
 	
+	/*
+	 * calcScore method calls all the scoring methods based on the specified player
+	 * outputs the players score
+	 * @param player    the player object for which the score will be calculated
+	 */
 	private void calcScore(Player player) {
 		dumplingScore(player);
 		puddingScore(player);

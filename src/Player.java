@@ -1,15 +1,12 @@
 import java.util.*;
 
 /**
-*Represents the player class in the game
-*This class creates the instance of the player that is assigned to the user
-*The player class will include the method for possibleMoves that determine
-*whether a move is allowed or not
-*This class also includes the card that is played
+*This is the Superclass used by all types of players
+*contains empty methods that will be used by subclasses 
 */
 
 public class Player {
-	
+	//instance variables
 	private LinkedList<String> possibleMoves;
 	private String card;
 	private int playerID;
@@ -27,11 +24,15 @@ public class Player {
 		return possibleMoves;
 	}
 	
+	/*
+	 * getID returns the id of the player object
+	 * @return playerID  int value of payer
+	 */
 	public int getID() {
 		return playerID;
 	}
 	/**
-	*The setPossibleMoves is a method that assogms the possibleMoves variable 
+	*The setPossibleMoves is a method that assigns the possibleMoves variable 
 	*to the hand parameter
 	*@param hand 	is from the Deck class and has the cards that are in the 
 	*		player's hand that are used to determine what the player's
@@ -42,20 +43,19 @@ public class Player {
 		possibleMoves = hand;
 	}
 	
+	/* 
+	 * empty method move, 
+	 */
 	public void move() {
 		
 	}
-	
+	/*
+	 * empty method toString
+	 */
 	public String toString() {
 		return null;
 	}
-	/**
-	*The move method asks the player which card they choose to place on their
-	*board
-	*This method checks to see if the user input is possible with the hand they have
-	*@param player	is used to determine which player is making a move and what hand
-	*		the player has to figure out if their move is possible
-	*/
+	
 	
 	public Hashtable<String,Integer> getBoard() {
 		return board;
