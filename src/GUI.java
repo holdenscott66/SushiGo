@@ -2,6 +2,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+
+import java.util.Hashtable;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -18,7 +21,17 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-// CHECK LINES BETWEEN 258 AND 265
+
+
+// issue right now is to break out of the loop and redo the create images method
+//easiest way is to make the load image into a method
+//or figure out a way to only make the user click one button at a time, limit the button clicks?
+
+
+
+// still have to figure out how to pass turns back and forth (should just be an external for loop with the amount of players?)
+
+
 
 //if you want user events you need the eventHandler<ActionEvent> at the end of the class
 public class GUI extends Application {
@@ -203,12 +216,6 @@ public class GUI extends Application {
 		scene4 = new Scene(layout4, 500, 500);
 		
 		
-		
-		
-		
-		
-		
-		
 		StackPane layout5 = new StackPane();
 		
 		
@@ -226,13 +233,18 @@ public class GUI extends Application {
 			
 		 // ImageView view = null;
 			ImageView view1 = null;
-		    boolean buttonClicked = false;
-		    HBox plantedCard = null;
-		   
+	
+		    
+		    Hashtable<String, Integer> board = new Hashtable<String, Integer>();
+
 
 			
+			
 			for (int i = 0; i < game.getHand(0).size(); i++) {
+				
+				
 				ImageView view;
+				
 				view = new ImageView(game.getHand(0).get(i) + ".png");
 				
 				
@@ -240,8 +252,11 @@ public class GUI extends Application {
 				buttonCards.setText(game.getHand(0).get(i));
 			
 			   
-				
 			    buttonCards.setOnAction((e-> {
+			    	
+		
+			  
+			    		
 			    		String cardPlayed;
 			    		SimpleBooleanProperty isDisabled = new SimpleBooleanProperty();
 			    		
@@ -253,33 +268,36 @@ public class GUI extends Application {
 		            ((Button)(e.getSource())).setAlignment(Pos.BASELINE_RIGHT);
 		            
 		            
-		            
+		           
 		            
 		            cardPlayed = ((Button)(e.getSource())).getText();
+		        
 		            game.getHand(0).remove(cardPlayed);
-		 
 		            game.updateHand(0,1);
+		        
+		        
 		            System.out.println(game.getHand(0));
+		        
+		        
 		            
-		            if(game.getHand(0).size() != 10) {
-		            	window.setScene(scene4);
-		            
-		            }
-		            
-		            view.setFitWidth(50);
-		            view.setFitHeight(100);
-		            
-		            
-		            
-		            
-		            
+		    			if(board.containsKey(cardPlayed)) {
+		    				board.replace(cardPlayed, (board.get(cardPlayed) + 1));
+		    			}
+		    			else {
+		    				board.put(cardPlayed, 1);
+		    			}
+		    		
+		    				System.out.println(board);
 		            
 		            
+		           
+		    				view.setFitWidth(50);
+		    				view.setFitHeight(100);
 		            
-		            
+		    				
+		    				
 			    }));
 				
-			    
 			   
 		            //should be something like game.getHand("NEXT PLAYER IN CLOCKWISE DIRECITON).size()
 		            
@@ -291,8 +309,10 @@ public class GUI extends Application {
 						buttonCards.setText(game.getHand(0).get(j));
 						buttonCards.setMaxWidth(100);
 		            }
+		            
 			    		*/
 			   
+			    
 				
 				view.setFitWidth(100);
 				view.setFitHeight(150);
@@ -302,17 +322,15 @@ public class GUI extends Application {
 				boxPic.getChildren().addAll(buttonCards);
 
 			}
-	//	}
+		// }
 
 		layout5.getChildren().addAll(Background,boxPic);
 		
 
 		
 		scene5 = new Scene(layout5, 1366, 766);
-		
-		
-		
-		
+
+
 		window.setTitle("Sushi Go");
 		window.setScene(scene1);
 		window.show();
