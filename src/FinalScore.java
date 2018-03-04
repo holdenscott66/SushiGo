@@ -16,12 +16,12 @@ import java.util.*;
 public class FinalScore {
 	//variables
 	
-	Hashtable<String, Integer>[] boards;
+	private Hashtable<String, Integer>[] boards;
 
 	/**
 	
 	
-	*The FinalScore constructor takes the payers boards and creates an array of hashtables
+	*The FinalScore constructor takes the players boards and creates an array of hashtables
 	*calls calcScore method for each player
 	*@param game	This is the game object that is created from the GameConfiguration class
 	*		This parameter is used to refer to the players and their boards and to be able to 
@@ -59,8 +59,8 @@ public class FinalScore {
 	/**
 	*The method dumplingScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*This methods does not take parameters or return values, but update the int variable
-	*finalScore
+	*calls method player.updateScore(score) to update the player object's score based on the number of points
+	*@param player    the player object for which the score is calculated
 	*/
 	
 	private void dumplingScore(Player player) {
@@ -91,8 +91,9 @@ public class FinalScore {
 	/**
 	*The method puddingScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*This methods does not take parameters or return values, but update the int variable
-	*finalScore
+	*compares the player's board to all of the boards in the Array boards. 
+	*calls method player.updateScore(score) to update the player object's score based on the number of points
+	*@param player    the player object for which the score is calculated
 	*/
 	
 	private void puddingScore(Player player) {
@@ -129,8 +130,9 @@ public class FinalScore {
 	/**
 	*The method makiRollScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*This methods does not take parameters or return values, but update the int variable
-	*finalScore
+	*compares the player's board to all of the boards in the Array boards. 
+	*calls method player.updateScore(score) to update the player object's score based on the number of points
+	*@param player    the player object for which the score is calculated
 	*/
 	
 	private void makiRollScore(Player player) {
@@ -155,8 +157,8 @@ public class FinalScore {
 	/**
 	*The method sashimiScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*This methods does not take parameters or return values, but update the int variable
-	*finalScore
+	*calls method player.updateScore(score) to update the player object's score based on the number of points
+	*@param player    the player object for which the score is calculated
 	*/
 	
 	private void sashimiScore(Player player) {
@@ -168,8 +170,8 @@ public class FinalScore {
 	/**
 	*The method tempuraScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*This methods does not take parameters or return values, but update the int variable
-	*finalScore
+	*calls method player.updateScore(score) to update the player object's score based on the number of points
+	*@param player    the player object for which the score is calculated
 	*/
 	
 	private void tempuraScore(Player player) {
@@ -181,8 +183,8 @@ public class FinalScore {
 	/**
 	*The method nigiriScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*This methods does not take parameters or return values, but update the int variable
-	*finalScore
+	*calls method player.updateScore(score) to update the player object's score based on the number of points
+	*@param player    the player object for which the score is calculated
 	*/
 	
 	private void nigiriScore(Player player) {
@@ -197,8 +199,8 @@ public class FinalScore {
 	/**
 	*The method wasabiNigiriScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*This methods does not take parameters or return values, but update the int variable
-	*finalScore
+	*calls method player.updateScore(score) to update the player object's score based on the number of points
+	*@param player    the player object for which the score is calculated
 	*/
 	
 	private void wasabiNigiriScore(Player player) {

@@ -66,7 +66,7 @@ public class Deck {
 	*Cards from the deck are taken at random, and once the card is
 	*added to the hand, the card is removed from the deck
 	*@param numHandsnumber      number of type int of hands to be created 
-	*@return hnds    an array of Linked lists containing the number of hands specified
+	*@return hands    an array of Linked lists containing the number of hands specified
 	*/
 	
 	public LinkedList<String>[] setHand(int numHands){

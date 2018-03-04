@@ -1,52 +1,65 @@
 import java.util.*;
-
+/*
+ * EasyComputer is a subclass of player, inherits all of the methods and overrides
+ * move method so no user input is needed
+ */
 public class EasyComputer extends Player{
 	private LinkedList<String> possibleMoves;
 	private String card;
 	private int playerID;
-	private Hashtable<String, Integer> board = new Hashtable();
+	private Hashtable<String, Integer> board;
 	private Random randNum;
 	public static final String PLAYER_NAME = "Computer ";
 	private int score = 0;
 	
-	/**
-	*The getPossibleMoves method is the getter for the possibleMoves
-	*variable after it has been set
-	*@return possibleMoves that is set by the setter method setPossibleMoves
-	*/
+	/*
+	 * constructor EasyComputer takes no 
+	 * parameters and initializes the instance variables
+	 */
 	public EasyComputer() {
 		playerID = 1;
+		board = new Hashtable<String, Integer>();
 	}
 	
+	/*
+	 * constructor EasyComputer
+	 * @param id    initializes playerID with specified value
+	 */
 	public EasyComputer(int id) {
 		playerID = id + 1;
+		board = new Hashtable<String, Integer>();
 	}
-	
-	
+	/*
+	 * @see Player#getPossibleMoves()
+	 */
 	public LinkedList<String> getPossibleMoves() {
 		return possibleMoves;
 	}
-	
+	/*
+	 * @see Player#getID()
+	 */
 	public int getID() {
 		return playerID;
 	}
-	
+	/*
+	 * Overrides toString to return the player's name + id
+	 * @return PLAYER_NAME + player ID  	returns string value to identify the player object
+	 */
 	public String toString() {
 		return PLAYER_NAME + playerID;
 	}
-	
-	/**
-	*The setPossibleMoves is a method that assigns the possibleMoves variable 
-	*to the hand parameter
-	*@param hand 	is from the Deck class and has the cards that are in the 
-	*		player's hand that are used to determine what the player's
-	*		possible moves are
-	*/
-	
+	/*
+	 * @see Player#setPossibleMoves(java.util.LinkedList)
+	 */
 	public void setPossibleMoves(LinkedList<String> hand) {
 		possibleMoves = hand;
 	}
-	
+	/*
+	 * overrides method move in superclass
+	 * takes no parameters and returns nothing
+	 * generates a random integer within the size of the hand
+	 * adds selected card to the objectds board
+	 */
 	public void move() {
 		randNum = new Random();
 		int cardNum = randNum.nextInt(possibleMoves.size());
@@ -60,25 +73,27 @@ public class EasyComputer extends Player{
 			board.put(card, 1);
 		}
 	}
-	
-	
+	/*
+	 * @see Player#getBoard()
+	 */
 	public Hashtable<String,Integer> getBoard() {
 		return board;
 	}
-	
-	/**
-	*The method cardPlayed just returns the card that is played
-	*@return 	the card that is chosen to be placed on the board
-	*/
-	
+	/*
+	 * @see Player#updateScore(int)
+	 */
 	public void updateScore(int add) {
 		score += add;
 	}
-	
+	/*
+	 * @see Player#getScore()
+	 */
 	public int getScore() {
 		return score;
 	}
-	
+	/*
+	 * @see Player#cardPlayed()
+	 */
 	public String cardPlayed() {
 		return card;
 	}

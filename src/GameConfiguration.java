@@ -17,7 +17,8 @@ public class GameConfiguration {
 	
 	
 	/**
-	*The GameConfiguration method creates the deck, the boards, and the hands
+	*The GameConfiguration method creates the deck, the boards, an array of the player objects,
+	* the player objects depending on the game typeand the hands
 	*Takes in no parameters and does not return anything
 	*/
 	
@@ -46,10 +47,9 @@ public class GameConfiguration {
 	}
 	
 	/**
-	*The getHand method checks if the player is player 1
-	*If the player is in fact player 1 they are given hand 1,
-	*if not, they are given hand 2
-	*@return the respective hand based on whether they are player 1 or not
+	*The getHand method returns a LinkedList of the hand depended on which hand number is specified
+	*@param handNum    the int value of the required hand
+	*@return the respective hand based on the parameter
 	*/
 	
 	public LinkedList<String> getHand(int handNum) {
@@ -58,8 +58,8 @@ public class GameConfiguration {
 	
 	/**
 	*The displayHand method displays the hand to the player
-	*@param player 	is the player's number, which determines
-	*		whether they are player 1 or 2
+	*@param player 	is the player object, which determines
+	*		the player's name
 	*@param hand	is the hand that is currently assigned to 
 	*		the player
 	*/
@@ -75,27 +75,20 @@ public class GameConfiguration {
 	*The updateHands method is used to update the player's hand
 	*after they've chosen which card to place on their board
 	*This method removes the card they've chosen from their hand
-	*@param firstPlayer 	These two parameters identify the 
-	*@param secondPlayer	player to distinguish which player 
-	*			removed which card
+	*@param playerNum 	which player in the Array
+	*@param handNum	   which hand to update
 	*/
 	
 	public void updateHand(int playerNum, int handNum) {
 		hands[handNum].remove(players[playerNum].cardPlayed());
 	}	
 	
+	/*
+	 * @return players     Array of player objects
+	 */
 	public Player[] getPlayers() {
 		return players;
 	}
-	/**
-	*The getBoard method is used to create the board used by players
-	*to record the cards they wish to keep for points
-	*@param player	is used to identify the player so that the board
-	*		can be made specifically for them
-	*		The board stays with the player throughout the game
-	*@return the board based on whether the player is player 1 or not
-	*/
-	
 	
 	/**
 	*The displayBoard method is used to display the board with the cards
