@@ -14,13 +14,9 @@ import java.util.*;
 */
 
 public class FinalScore {
-	//variables
-	
 	private Hashtable<String, Integer>[] boards;
 
 	/**
-	
-	
 	*The FinalScore constructor takes the players boards and creates an array of hashtables
 	*calls calcScore method for each player
 	*@param game	This is the game object that is created from the GameConfiguration class

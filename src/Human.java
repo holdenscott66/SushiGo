@@ -1,8 +1,9 @@
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.Scanner;
-/*
- * Class human is a subclass of Player. Inherits all the methods and overrides move, toString, and 
+/**
+ * Class human is a subclass of Player.
+ * Defines all methods that a human player object uses
  */
 public class Human extends Player {
 	
@@ -15,9 +16,7 @@ public class Human extends Player {
 	public static final String PLAYER_NAME = "Player ";
 	private int score = 0;
 	
-	
-	
-	/*
+	/**
 	 * constructor Human takes no parameters 
 	 * initializes the variables
 	 */
@@ -31,37 +30,42 @@ public class Human extends Player {
 		board = new Hashtable<String, Integer>();
 	}
 	
-	/*
-	 * @see Player#getPossibleMoves()
-	 */
+	/**
+	*The getPossibleMoves method is the getter for the possibleMoves
+	*variable after it has been set
+	*@return possibleMoves that is set by the setter method setPossibleMoves
+	*/
 	public LinkedList<String> getPossibleMoves() {
 		return possibleMoves;
 	}
 	
-	/*
-	 * @see Player#getID()
+	/**
+	 * getID returns the id of the player object
+	 * @return playerID  int value of player
 	 */
 	public int getID() {
 		return playerID;
 	}
 	
-	/*
-	 * @see Player#setPossibleMoves(java.util.LinkedList)
-	 */
+	/**
+	*The setPossibleMoves is a method that assigns the possibleMoves variable 
+	*to the hand parameter
+	*@param hand 	is from the Deck class and has the cards that are in the 
+	*		player's hand that are used to determine what the player's
+	*		possible moves are
+	*/
 	public void setPossibleMoves(LinkedList<String> hand) {
 		possibleMoves = hand;
 	}
 	
-	/*
-	 * Overrides toString to return the player's name + id
-	 * 
+	/**
+	 * toString to return the player's name + id
 	 * @return PLAYER_NAME + player ID  	returns string value to identify the player object
 	 */
 	public String toString() {
 		return PLAYER_NAME + playerID;
 	}
-	/*
-	 * overrides move method in superclass
+	/**
 	 * takes no parameters, and prompts user for input. 
 	 * if selection is valid, it is removed from the hand and added to the player's board.
 	 */
@@ -85,27 +89,31 @@ public class Human extends Player {
 			board.put(card, 1);
 		}
 	}
-	/*
-	 * @see Player#getBoard()
+	/**
+	 * returns the hashtable of cards that the player object has chosen
+	 * @return board     returns hashtable board
 	 */
 	public Hashtable<String,Integer> getBoard() {
 		return board;
 	}
-	/*
-	 * @see Player#updateScore(int)
+	/**
+	 * updateScore adds a value to the player object's current score
+	 * @param int add      the value added to score
 	 */
 	public void updateScore(int add) {
 		score += add;
 	}
-	/*
-	 * @see Player#getScore()
+	/**
+	 * getScore method returns value of the player object's current score
+	 * @return score   returns int value of score
 	 */
 	public int getScore() {
 		return score;
 	}
-	/*
-	 * @see Player#cardPlayed()
-	 */
+	/**
+	*The method cardPlayed just returns the card that is played
+	*@return 	the card that is chosen to be placed on the board
+	*/
 	public String cardPlayed() {
 		return card;
 	}
