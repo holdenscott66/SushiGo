@@ -21,8 +21,28 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
+
+
+
+
+
+
+
+
+/* The GUI class represents the GUI that appears to the user for the SushiGo game
+* This GUI will be using the methods inside the classes in ConfirmBox,Deck,EasyComputer,
+* FinalScore,GameConfiguration,GamePlay,HardComputer,Human,Player and Start
+* This class extends from the Application class that is provided by JavaFX
+*/
+
+
 public class GUI extends Application {
 
+	
+	/* This calls from the ConfirmBox class and is used as our check to make sure the user
+    	* is sure about quitting our game
+    	*/
+	
 	private void closeProgram() {
 		boolean answer = ConfirmBox.display();
 		if (answer) {
@@ -33,6 +53,12 @@ public class GUI extends Application {
 	
 	//********************************************************************************************************************************		
 	
+	
+	/**
+     * The main class where all the GUI is created and called using
+     * @param args
+     */
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -42,12 +68,17 @@ public class GUI extends Application {
 	
 	//Instance Variables
 	private GameConfiguration game;
-	private Player[] players;
+	private Player[ ] players;
 	private FinalScore score;
 	
 	//********************************************************************************************************************************		
 	
+	
+	
+	
+	
 	public void start(Stage primaryStage) throws Exception {
+		
 		window = primaryStage;
 		window.setOnCloseRequest(e -> {
 			e.consume();
@@ -234,4 +265,3 @@ public class GUI extends Application {
 		window.show();
 	}
 }
-
