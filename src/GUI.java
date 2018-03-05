@@ -24,7 +24,7 @@ import javafx.scene.image.Image;
 public class GUI extends Application {
 
 	private void closeProgram() {
-		boolean answer = ConfirmBox.display("Confirmation", "Sure you want to Exit?");
+		boolean answer = ConfirmBox.display();
 		if (answer) {
 			window.close();
 			System.out.println("Closed");
@@ -42,8 +42,7 @@ public class GUI extends Application {
 	
 	//Instance Variables
 	private GameConfiguration game;
-	private Player players;
-	private int numPlayers;
+	private Player[] players;
 	private FinalScore score;
 	
 	//********************************************************************************************************************************		
@@ -67,10 +66,13 @@ public class GUI extends Application {
 		
 		//mainScreen Display
 		StackPane mainScreenPane = new StackPane();
+		ImageView mainScreenBackground = new ImageView("mainscreen.png");
+		mainScreenBackground.setFitHeight(600);
+		mainScreenBackground.setFitWidth(1000);
 		VBox mainScreenVBox = new VBox(20);
 		mainScreenVBox.setAlignment(Pos.CENTER);
 		mainScreenVBox.getChildren().addAll(playButton, rulesButton, exitButton);
-		mainScreenPane.getChildren().add(mainScreenVBox);
+		mainScreenPane.getChildren().addAll(mainScreenBackground, mainScreenVBox);
 		mainScreenScene = new Scene(mainScreenPane, 1000,600);
 	
 		//********************************************************************************************************************************
@@ -87,10 +89,13 @@ public class GUI extends Application {
 		
 		//Selection Display
 		StackPane selectionPane = new StackPane();
+		ImageView selectionBackground = new ImageView("selection.jpg");
+		selectionBackground.setFitWidth(1000);
+		selectionBackground.setFitHeight(600);
 		VBox selectionVBox = new VBox(20);
 		selectionVBox.setAlignment(Pos.CENTER);
 		selectionVBox.getChildren().addAll(playerPVPButton, easyAIButton, hardAIButton, backButton);
-		selectionPane.getChildren().add(selectionVBox);
+		selectionPane.getChildren().addAll(selectionBackground,selectionVBox);
 		selectionScene = new Scene(selectionPane, 1000, 600);
 
 		//********************************************************************************************************************************
@@ -123,10 +128,13 @@ public class GUI extends Application {
 		
 		//Player Display
 		StackPane playerPane = new StackPane();
+		ImageView playerBackground = new ImageView("player.png");
+		selectionBackground.setFitWidth(1000);
+		selectionBackground.setFitHeight(600);
 		VBox playerVBox = new VBox(20);
 		playerVBox.setAlignment(Pos.CENTER);
 		playerVBox.getChildren().addAll(twoPlayerButton, threePlayerButton, fourPlayerButton, playerBackButton);
-		playerPane.getChildren().add(playerVBox);
+		playerPane.getChildren().addAll(playerBackground, playerVBox);
 		playerScene = new Scene(playerPane, 1000, 600);
 		
 		//********************************************************************************************************************************
