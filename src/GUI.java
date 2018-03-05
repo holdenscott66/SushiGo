@@ -256,7 +256,7 @@ public class GUI extends Application {
 		
 		//Final Score Display (NOT READY YET)
 		StackPane finalScorePane = new StackPane();
-		new FinalScore(game);
+		score = new FinalScore(game);
 
 		//********************************************************************************************************************************
 
