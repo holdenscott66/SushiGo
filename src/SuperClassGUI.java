@@ -107,32 +107,19 @@ public class SuperClassGUI
 	 */
 	public void make_Image(String name_Of_Pic)
 	{
-		ImageView check_Pic = null;
-		ImageView compare_Pic;
-		String picture_Name1 = name_Of_Pic +".jpg";
-		String picture_Name2 = name_Of_Pic +".png";
-		String picture_Name3 = name_Of_Pic +".jpeg";
-		String picture_Name4 = name_Of_Pic +".gif";
-		ArrayList<String> picture_Name_List = new ArrayList<String>();
-		
-		picture_Name_List.add(picture_Name1);
-		picture_Name_List.add(picture_Name2);
-		picture_Name_List.add(picture_Name3);
-		picture_Name_List.add(picture_Name4);
-		
-		for(int allTypes = 0; allTypes < picture_Name_List.size(); allTypes++)
-		{	
-			compare_Pic = new ImageView(picture_Name_List.get(allTypes));
-			//probably put exception handling here so if it errors out check pic doesnt change. 
-			//if it doesnt change then it prints out a message saying your picture isnt in the bin folder dude
-			if(check_Pic== new ImageView(picture_Name_List.get(allTypes)) )
-		{
-			newImage = check_Pic;
-		}
-		if(check_Pic == null)
-		{
-			System.out.println("Dawg, we cant find this pic, check your bin and workspace aight. Much Love, Daniel <3 <3");
-		}
+		ImageView check_Pic = new ImageView("picture_Name");
+		String picture_Name = name_Of_Pic +".png";
+	
+		newImage = check_Pic;
+	}
+	
+	/**
+	 * Get method to get data for the newImage
+	 */
+	public ImageView get_New_Image()
+	{
+		return newImage;
+	}
 		}
 		
 	}
