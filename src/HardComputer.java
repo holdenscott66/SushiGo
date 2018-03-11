@@ -4,14 +4,24 @@ import java.util.*;
  */
 public class HardComputer extends Player {
 	
+	private LinkedList<String> allCards;
+	private LinkedList<String>[] hands;
 	public static final String PLAYER_NAME = "Computer ";
 	
 	/**
 	 * constructor HardComputer
 	 * @param id    initializes playerID with specified value
 	 */
-	public HardComputer(int id) {
+	public HardComputer(int id, LinkedList<String>[] hands ) {
 		super(id + 1);
+		this.hands = hands;
+		for(int handNum = 0; handNum < hands.length; handNum++) {
+			for(int card = 0; card < hands[handNum].size(); card++) {
+				allCards.add(hands[handNum].get(card));
+			}
+		}
+		allCards.sort(null);
+		
 	}
 	
 	/**

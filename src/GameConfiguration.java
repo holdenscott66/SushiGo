@@ -41,7 +41,7 @@ public class GameConfiguration {
 		else if(mode == 3) {
 			players[0] = new Human();
 			for(int count = 1; count < numPlayers; count++) {
-				players[count] = new HardComputer(count - 1);
+				players[count] = new HardComputer(count - 1, hands);
 			}
 		}
 	}
