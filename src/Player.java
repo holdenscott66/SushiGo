@@ -7,21 +7,63 @@ import java.util.*;
 
 public abstract class Player {
 	
-	public abstract LinkedList<String> getPossibleMoves();
+	private LinkedList<String> possibleMoves;
+	private String card;
+	private int playerID;
+	private Hashtable<String, Integer> board;
+	private int score = 0;
 	
-	public abstract int getID();
+	public Player() {
+		this.playerID = 1;
+		board = new Hashtable<String, Integer>();
+	}
+	public Player(int playerID) {
+		this.playerID = playerID;
+		board = new Hashtable<String, Integer>();
+	}
 	
-	public abstract void setPossibleMoves(LinkedList<String> hand);
+	public LinkedList<String> getPossibleMoves() {
+		return possibleMoves;
+	}
+	
+	public int getID() {
+		return playerID;
+	}
+	
+	public void setPossibleMoves(LinkedList<String> hand) {
+		possibleMoves = hand;
+	}
 	
 	public abstract void move() ;
 	
 	public abstract String toString() ;
 	
-	public abstract Hashtable<String,Integer> getBoard();
+	public Hashtable<String,Integer> getBoard() {
+		return board;
+	}
 
-	public abstract void updateScore(int add);
+	public void updateScore(int add) {
+		score += add;
+	}
 	
-	public abstract int getScore();
+	public void updateBoard() {
+		if(board.containsKey(card)) {
+			board.replace(card, (board.get(card) + 1));
+		}
+		else {
+			board.put(card, 1);
+		}
+	}
 	
-	public abstract String cardPlayed();
+	public int getScore() {
+		return score;
+	}
+	
+	protected void setCardPlayed(String card) {
+		this.card = card;
+	}
+	
+	public String getCardPlayed() {
+		return card;
+	}
 }

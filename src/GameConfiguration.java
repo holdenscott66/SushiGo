@@ -80,7 +80,7 @@ public class GameConfiguration {
 	*/
 	
 	public void updateHand(int playerNum, int handNum) {
-		hands[handNum].remove(players[playerNum].cardPlayed());
+		hands[handNum].remove(players[playerNum].getCardPlayed());
 	}	
 	
 	/*

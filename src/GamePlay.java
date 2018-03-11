@@ -25,7 +25,7 @@ public class GamePlay {
  * 
  * then creates an instance of FinalScore to calculate the scores of the players after 10 rounds
  */
-	private void play(int numPlayers, GameConfiguration game) {
+	public void play(int numPlayers, GameConfiguration game) {
 		int handNum;
 		for(int turn = 0; turn < 10; turn ++) {
 			for(int count = 0; count < numPlayers; count++) {
