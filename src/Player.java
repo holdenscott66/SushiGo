@@ -34,7 +34,7 @@ public abstract class Player {
 		possibleMoves = hand;
 	}
 	
-	public abstract void move() ;
+	public abstract void move(int turn) ;
 	
 	public abstract String toString() ;
 	

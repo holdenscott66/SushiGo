@@ -11,9 +11,7 @@ public class Start {
 
 	private static Scanner user_input;
 
-	public static void main(String[] args)
-			//throws Exception 
-	{
+	public static void main(String[] args){
 		
 		user_input = new Scanner(System.in);
 		int selection, players;

@@ -20,7 +20,7 @@ public class EasyComputer extends Player{
 		return PLAYER_NAME + super.getID();
 	}
 	
-	public void move() {
+	public void move(int turn) {
 		randNum = new Random();
 		int cardNum = randNum.nextInt(super.getPossibleMoves().size());
 		String card = super.getPossibleMoves().get(cardNum);

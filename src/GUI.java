@@ -22,13 +22,6 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
 
-
-
-
-
-
-
-
 /* The GUI class represents the GUI that appears to the user for the SushiGo game
 * This GUI will be using the methods inside the classes in ConfirmBox,Deck,EasyComputer,
 * FinalScore,GameConfiguration,GamePlay,HardComputer,Human,Player and Start
@@ -97,7 +90,7 @@ public class GUI extends Application {
 		
 		//mainScreen Display
 		StackPane mainScreenPane = new StackPane();
-		ImageView mainScreenBackground = new ImageView("mainscreen.png");
+		ImageView mainScreenBackground = new ImageView("/pictures/mainscreen.png");
 		mainScreenBackground.setFitHeight(600);
 		mainScreenBackground.setFitWidth(1000);
 		VBox mainScreenVBox = new VBox(20);
@@ -120,7 +113,7 @@ public class GUI extends Application {
 		
 		//Selection Display
 		StackPane selectionPane = new StackPane();
-		ImageView selectionBackground = new ImageView("selection.jpg");
+		ImageView selectionBackground = new ImageView("/pictures/Background.jpg");
 		selectionBackground.setFitWidth(1000);
 		selectionBackground.setFitHeight(600);
 		VBox selectionVBox = new VBox(20);
@@ -159,7 +152,7 @@ public class GUI extends Application {
 		
 		//Player Display
 		StackPane playerPane = new StackPane();
-		ImageView playerBackground = new ImageView("player.png");
+		ImageView playerBackground = new ImageView("/pictures/player.png");
 		selectionBackground.setFitWidth(1000);
 		selectionBackground.setFitHeight(600);
 		VBox playerVBox = new VBox(20);
@@ -180,11 +173,11 @@ public class GUI extends Application {
 		//buttons for Player 1
 		LinkedList<Button> gameButtons1 = new LinkedList<Button>();
 		Hashtable<String, Integer> board1 = new Hashtable<String, Integer>();
-		ImageView Background1 = new ImageView("Background.jpg");
+		ImageView Background1 = new ImageView("/pictures/Background.jpg");
 		Background1.setFitWidth(1000);
 		Background1.setFitHeight(600);
 		for (int i = 0; i< game.getHand(0).size(); i++) {
-			ImageView cardImage = new ImageView(game.getHand(0).get(i) + ".png");
+			ImageView cardImage = new ImageView("/pictures/" + game.getHand(0).get(i) + ".png");
 			cardImage.setFitHeight(100);
 			cardImage.setFitWidth(75);
 			Button cardButton = new Button((game.getHand(0).get(i)), cardImage);
@@ -222,11 +215,11 @@ public class GUI extends Application {
 		//buttons for Player 2
 		LinkedList<Button> gameButtons2 = new LinkedList<Button>();
 		Hashtable<String, Integer> board2 = new Hashtable<String, Integer>();
-		ImageView Background2 = new ImageView("Background.jpg");
+		ImageView Background2 = new ImageView("/pictures/Background.jpg");
 		Background2.setFitWidth(1000);
 		Background2.setFitHeight(600);
 		for (int i = 0; i< game.getHand(1).size(); i++) {
-			ImageView cardImage = new ImageView(game.getHand(1).get(i) + ".png");
+			ImageView cardImage = new ImageView("/pictures/" + game.getHand(0).get(i) + ".png");
 			cardImage.setFitHeight(100);
 			cardImage.setFitWidth(75);
 			Button cardButton = new Button((game.getHand(1).get(i)), cardImage);

@@ -34,7 +34,7 @@ public class Human extends Player {
 	 * takes no parameters, and prompts user for input. 
 	 * if selection is valid, it is removed from the hand and added to the player's board.
 	 */
-	public void move() {
+	public void move(int turn) {
 		user_input = new Scanner(System.in);
 		do {
             System.out.println(this.toString() + ", Enter the number of the card you choose:");

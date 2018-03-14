@@ -32,7 +32,7 @@ public class GamePlay {
 				handNum = turn % numPlayers; 
 				players[count].setPossibleMoves(game.getHand((count + handNum) % numPlayers));
 				game.displayHand(players[count], (count + handNum) % numPlayers);
-				players[count].move();
+				players[count].move(turn);
 				game.updateHand(count, (count + handNum) % numPlayers);
 			}
 		}

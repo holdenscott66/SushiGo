@@ -79,8 +79,10 @@ public class Deck {
 				hand.add(newCard);
 				deckOfCards.remove(cardNum);
 			}
+			hand.sort(null);
 			hands[handNum] = hand;
 		}
+		
 		
 		return hands;
 	}
