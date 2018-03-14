@@ -23,57 +23,81 @@ import javafx.scene.image.Image;
 
 /**
  * This class will be used as a super class for the GUI portion of our game
- * Hopefully it will create methods that allow us to create scenes and other 
- * shit more easily
- * @author Daniel
- *
+ * The methods included will allow for subclasses to create things like buttons,
+ * labels, scenes, images, and stackpanes by just calling the method.
  */
-public class SuperClassGUI 
+public abstract class SuperClassGUI 
 {
-	//Instanced variables that this class will have
-	//NODES
-	private Button newButton;
-	private Label newLabel;
 	
-	private Node newGraphic;
-	private Scene newScene;
-	private StackPane newStackPane;
-	private ImageView newImage;
-	private VBox newVbox;
-	private HBox newHbox;
 
-	//method to make a button,returns a button
-	public Button make_Button(String text)
+	/*
+	 * makeButton takes in the @param of a string that will hold the title
+	 * of the button. It returns a new button that uses the string for the title
+	 * button.
+	 */
+	public Button makeButton(String buttonTitle)
 	{
-		Button new_Button = new Button(text);
-		return new_Button;
+		Button newButton = new Button(buttonTitle);
+		return newButton;
 	}
 	
-	//method to make a labe, returns a label
-	public Label make_Label(String name_Label)
+	/*
+	 * makeLabel takes in the @param of a string that will hold the title of 
+	 * the label. It returns a new label that uses the string for the label name.
+	 */
+	public Label makeLabel(String nameOfLabel)
 	{
-		Label new_Label = new Label(name_Label);
-		return new_Label;
+		Label newLabel = new Label(nameOfLabel);
+		return newLabel;
 	}
 
-	//method to make an image returns an image
-	public ImageView make_Image(String name_Of_Pic)
+	/*
+	 * makeImage takes in the @param of a string that is the title of the picture
+	 * that will be in our bin folder. This method takes the parameter and adds .png
+	 * and is saved under a string variable that then makes a new image based on that variable
+	 * and returns that to make an image.
+	 */
+	public ImageView makeImage(String nameOfPic)
 	{
-		String picture_Name = name_Of_Pic +".png";
-		ImageView new_Pic = new ImageView(picture_Name);
-		return new_Pic;
+		String pictureName = nameOfPic +".png";
+		ImageView newPic = new ImageView(pictureName);
+		return newPic;
 	}
-	//method to make a Vbox returns VBox
+	/*
+	 * makeVbox creates a new Vbox, takes in no parameters. Returns a new vbox.
+	 */
 	public VBox makeVbox()
 	{
 		VBox newVbox = new VBox ();
 		return newVbox;
 	}
-	//method to make a Hbox returns VBox
+	
+	/*
+	 * makeHbox creates a new Hbox, takes in no parameters. Returns a new hbox.
+	 */
 	public HBox makeHbox()
 	{
 		HBox newHbox = new HBox ();
 		return newHbox;
 	}
+	
+	/*
+	 * makeStackPane creates a new StackPane, takes in no parameters. Returns a new StackPane.
+	 */
+	public StackPane makeStackPane()
+	{
+		return new StackPane();
+	}
+	
+	/*
+	 * makeScene takes in @param StackPane, @param double @param double as parameters and creates
+	 * a new scene that displays the Stackpane along with the desired width and height in that order
+	 */
+	
+	public Scene makeScene(StackPane newStackPane, double width, double height)
+	{
+		return new Scene(newStackPane, width, height);
+	}
+	
 	
 }
