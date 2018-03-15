@@ -1,4 +1,5 @@
 import javafx.geometry.Pos;
+import javafx.scene.paint.Color;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.text.Font;
 
 public class ConfirmBox {
 	
@@ -20,7 +22,9 @@ public class ConfirmBox {
 		window.setTitle("Confirmation");
 		window.setMinWidth(300);
 		
-		Label label = new Label("Sure you want to Exit?");
+		Label label = new Label("Are you sure you want to quit?");
+		label.setFont(new Font("Arial",30));
+		label.setTextFill(Color.BLACK);
 		
 		Button yes = new Button("Yes");
 		yes.setOnAction(e -> {
@@ -33,14 +37,14 @@ public class ConfirmBox {
 		window.close();
 		});
 		StackPane displayPane = new StackPane();
-		ImageView displayBackground = new ImageView("quit.jpg");
-		displayBackground.setFitWidth(300);
-		displayBackground.setFitHeight(200);
+		ImageView displayBackground = new ImageView("/pictures/quit.jpg");
+		displayBackground.setFitWidth(657);
+		displayBackground.setFitHeight(588);
 		VBox layout = new VBox(10);
 		layout.setAlignment(Pos.CENTER);
 		layout.getChildren().addAll(label,yes,no);
 		displayPane.getChildren().addAll(displayBackground, layout);
-		Scene scene = new Scene(displayPane, 300, 200);
+		Scene scene = new Scene(displayPane, 657, 588);
 		window.setScene(scene);
 		window.showAndWait();
 		return answer;

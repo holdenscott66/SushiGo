@@ -26,7 +26,7 @@ import javafx.scene.image.Image;
  * The methods included will allow for subclasses to create things like buttons,
  * labels, scenes, images, and stackpanes by just calling the method.
  */
-public abstract class SuperClassGUI 
+public abstract class SuperClassGUI extends Application
 {
 	
 
@@ -59,7 +59,7 @@ public abstract class SuperClassGUI
 	 */
 	public ImageView makeImage(String nameOfPic)
 	{
-		String pictureName = nameOfPic +".png";
+		String pictureName = "/pictures/" + nameOfPic +".png";
 		ImageView newPic = new ImageView(pictureName);
 		return newPic;
 	}
