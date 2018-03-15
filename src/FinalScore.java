@@ -15,6 +15,7 @@ import java.util.*;
 
 public class FinalScore {
 	private Hashtable<String, Integer>[] boards;
+	Player[] players;
 
 	/**
 	*The FinalScore constructor takes the players boards and creates an array of hashtables
@@ -26,14 +27,8 @@ public class FinalScore {
 	*/
 	
 	public FinalScore(GameConfiguration game) {
-		Player[] players = game.getPlayers();
+		players = game.getPlayers();
 		boards = new Hashtable[players.length];
-		for (int count = 0; count < players.length; count ++) {
-			boards[count] = players[count].getBoard();
-		}
-		for (int count = 0; count < players.length; count ++) {
-			calcScore(players[count]);
-		}
 	}
 	
 	/*
@@ -41,15 +36,21 @@ public class FinalScore {
 	 * outputs the players score
 	 * @param player    the player object for which the score will be calculated
 	 */
-	private void calcScore(Player player) {
-		dumplingScore(player);
-		puddingScore(player);
-		makiRollScore(player);
-		sashimiScore(player);
-		tempuraScore(player);
-		wasabiNigiriScore(player);
-		nigiriScore(player);
-		System.out.println(player.toString() + "'s score: " + player.getScore());
+	public void calcScore() {
+		for (int count = 0; count < players.length; count ++) {
+			boards[count] = players[count].getBoard();
+		}
+		for (int playerNum = 0; playerNum < players.length; playerNum ++) {
+			Player player = players[playerNum];
+			dumplingScore(player);
+			sashimiScore(player);
+			tempuraScore(player);
+			wasabiNigiriScore(player);
+			nigiriScore(player);
+			puddingScore(player, playerNum);
+			makiRollScore(player, playerNum);
+			System.out.println(player.toString() + "'s score: " + player.getScore());
+		}
 	}
 	
 	/**
@@ -62,6 +63,8 @@ public class FinalScore {
 	private void dumplingScore(Player player) {
 		int score = 0;
 		switch(player.getBoard().getOrDefault("Dumpling", 0)) {
+		case 0:
+			score += 0;
 		case 1:
 			score += 1;
 			break;
@@ -74,11 +77,8 @@ public class FinalScore {
 		case 4:
 			score += 10;
 			break;
-		case 5:
-			score += 15;
-			break;
 		default:
-			score += 0;
+			score += 15;
 			break;
 		}
 		player.updateScore(score);
@@ -92,25 +92,29 @@ public class FinalScore {
 	*@param player    the player object for which the score is calculated
 	*/
 	
-	private void puddingScore(Player player) {
+	private void puddingScore(Player player, int playerNum) {
 		boolean mostPudding = true;
 		boolean leastPudding = true;
 		Hashtable<String, Integer> playerBoard = player.getBoard();
 		int score = 0;
 		for(int num = 0; num < boards.length; num++) {
-			if(playerBoard.getOrDefault("Pudding", 0) > boards[num].getOrDefault("Pudding", 0))
-				mostPudding = true;
-			else {
-				mostPudding = false;
-				break;
+			if(playerNum != num) {
+				if(playerBoard.getOrDefault("Pudding", 0) > boards[num].getOrDefault("Pudding", 0))
+					mostPudding = true;
+				else {
+					mostPudding = false;
+					break;
+				}
 			}
 		}
 		for(int num = 0; num < boards.length; num++) {
-			if(playerBoard.getOrDefault("Pudding", 0) < boards[num].getOrDefault("Pudding", 0))
-				leastPudding = true;
-			else {
-				leastPudding = false;
-				break;
+			if(playerNum != num) {
+				if(playerBoard.getOrDefault("Pudding", 0) < boards[num].getOrDefault("Pudding", 0))
+					leastPudding = true;
+				else {
+					leastPudding = false;
+					break;
+				}
 			}
 		}
 		if(mostPudding == true && leastPudding == false)
@@ -131,16 +135,18 @@ public class FinalScore {
 	*@param player    the player object for which the score is calculated
 	*/
 	
-	private void makiRollScore(Player player) {
+	private void makiRollScore(Player player, int playerNum) {
 		boolean mostMaki = true;
 		int score = 0;
 		Hashtable<String, Integer> playerBoard = player.getBoard();
 		for(int num = 0; num < boards.length; num++) {
-			if(playerBoard.getOrDefault("MakiRoll", 0) > boards[num].getOrDefault("MakiRoll", 0))
-				mostMaki = true;
-			else {
-				mostMaki = false;
-				break;
+			if(playerNum != num) {
+				if(playerBoard.getOrDefault("MakiRoll", 0) > boards[num].getOrDefault("MakiRoll", 0))
+					mostMaki = true;
+				else {
+					mostMaki = false;
+					break;
+				}
 			}
 		}
 		if(mostMaki == true)
@@ -185,7 +191,7 @@ public class FinalScore {
 	
 	private void nigiriScore(Player player) {
 		int score = 0;
-		score += (player.getBoard().getOrDefault("squidNigiri", 0) * 3);
+		score += (player.getBoard().getOrDefault("SquidNigiri", 0) * 3);
 		score += (player.getBoard().getOrDefault("SalmonNigiri", 0) * 2);
 		score += (player.getBoard().getOrDefault("EggNigiri", 0) * 1);
 		
@@ -220,6 +226,9 @@ public class FinalScore {
 			}
 			else
 				playerBoard.replace("Wasabi", 0);
+		}
+		for (String val : ((Hashtable<String,Integer>) playerBoard).keySet()) {
+		    System.out.println(val + ":" + playerBoard.get(val));
 		}
 		player.updateScore(score);
 	}
