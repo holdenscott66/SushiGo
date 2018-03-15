@@ -13,19 +13,19 @@ import java.util.*;
 public class GameConfiguration {
 	private Player[] players; 
 	private LinkedList<String>[] hands;
-	private Deck newDeck;
+	private Deck deck;
 	
 	
 	/**
 	*The GameConfiguration method creates the deck, the boards, an array of the player objects,
-	* the player objects depending on the game typeand the hands
+	* the player objects depending on the game type and the hands
 	*Takes in no parameters and does not return anything
 	*/
 	
 	public GameConfiguration(int mode, int numPlayers) {
 		players = new Player[numPlayers];
-		newDeck = new Deck();
-		hands = newDeck.setHand(numPlayers);
+		deck = new Deck();
+		hands = deck.setHand(numPlayers);
 		if(mode == 1) {
 			for(int count = 0; count < numPlayers; count++) {
 				players[count] = new Human(count);
@@ -46,6 +46,12 @@ public class GameConfiguration {
 		}
 	}
 	
+	public void newGame(int numPlayers) {
+		hands = deck.setHand(numPlayers);
+		for(int playerNum = 0; playerNum < numPlayers ; playerNum++) {
+			players[playerNum].resetBoard();
+		}
+	}
 	/**
 	*The getHand method returns a LinkedList of the hand depended on which hand number is specified
 	*@param handNum    the int value of the required hand

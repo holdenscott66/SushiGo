@@ -17,6 +17,7 @@ public abstract class Player {
 		this.playerID = 1;
 		board = new Hashtable<String, Integer>();
 	}
+	
 	public Player(int playerID) {
 		this.playerID = playerID;
 		board = new Hashtable<String, Integer>();
@@ -53,6 +54,10 @@ public abstract class Player {
 		else {
 			board.put(card, 1);
 		}
+	}
+	
+	public void resetBoard() {
+		board = new Hashtable<String, Integer>();
 	}
 	
 	public int getScore() {

@@ -1,17 +1,28 @@
+import java.util.Scanner;
+
 /**
  * GamePlay class is the game iterating through turns and calling all necessary methods. 
  */
 public class GamePlay {
 	private Player[] players;
 	int numPlayers;
+	boolean again;
+	private FinalScore scoreBoard;
+	private static Scanner user_input;
+	private GameConfiguration game;
 /**
  * GamePlay constructor, initializes the instance variables, and calls the play method to run the game
  * @param game   the object of gameConfiguration containing required information and methods. 
  */
-	public GamePlay(GameConfiguration game) {
+	public GamePlay(GameConfiguration game1) {
+		game = game1;
 		players = game.getPlayers();
 		numPlayers = players.length;
-		play(numPlayers, game);
+		scoreBoard = new FinalScore(game);
+		do {
+			play(numPlayers);
+			playAgain();
+		} while (again = true);
 	}
 /**
  * play method iterates for how ever many cards are in each hand for each player (2-4)
@@ -27,7 +38,7 @@ public class GamePlay {
  * 
  * then creates an instance of FinalScore to calculate the scores of the players after 10 rounds
  */
-	public void play(int numPlayers, GameConfiguration game) {
+	private void play(int numPlayers) {
 		int handNum;
 		int turn = 0;
 		boolean gameEnd = false;
@@ -53,6 +64,26 @@ public class GamePlay {
 				game.displayBoard(players[x]);
 				System.out.println("*********************************************************");
 			}	
-			new FinalScore(game);
+			scoreBoard.calcScore();
+	}
+	
+	private boolean playAgain() {
+		int selection;
+		user_input = new Scanner(System.in);
+		do {
+			System.out.print("Would you like to play again? \n 1) Yes \n 2) No");
+           while (!user_input.hasNextInt()) {
+               String input = user_input.next();
+               System.out.printf("\"%s\" is not a valid number.\n", input);
+           }
+           selection = user_input.nextInt();
+        } while (selection < 1 || selection > 2);
+		if(selection == 1) {
+			again = true;
+			game.newGame(numPlayers);
+		}
+		else
+			again = false;
+		return again;
 	}
 }
