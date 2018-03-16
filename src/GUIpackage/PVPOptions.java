@@ -53,6 +53,7 @@ public class PVPOptions{
 		twoPlayers.setOnAction(e -> {
 			playGame.setGame(1,2);
 			playGame.start(playStage);
+			
 			window.close();
 		});
 

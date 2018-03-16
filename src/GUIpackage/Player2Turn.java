@@ -24,7 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
-public class Player2Turn extends MainScreen {
+public class Player2Turn {
 	Stage window;
 	LinkedList<Button> hand;
 	HBox player2Hbox = new HBox(5);

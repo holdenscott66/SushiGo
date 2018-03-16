@@ -1,4 +1,4 @@
-package TEXTpackage;
+import TEXTpackage.*;
 
 import static org.junit.Assert.*;
 import java.util.*;

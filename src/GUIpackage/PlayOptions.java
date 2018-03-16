@@ -61,7 +61,7 @@ public class PlayOptions{
 		});
 		backButton.setOnAction(e -> {
 			window.close();
-			main.start(mainStage);
+			//main.start(mainStage);
 		});
 		
 		//PlayOptions Display

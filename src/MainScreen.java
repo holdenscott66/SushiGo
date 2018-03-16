@@ -29,7 +29,7 @@ public class MainScreen extends Application {
 	Stage window;
 	boolean answer;
 
-	protected void closeProgram(Stage window) {
+	private void closeProgram(Stage window) {
 		boolean answer = ConfirmBox.display();
 		if (answer) {
 			window.close();
@@ -56,7 +56,7 @@ public class MainScreen extends Application {
 
 		Button playButton = new Button("Let's Play!");
 		playButton.setOnAction(e ->	{
-				window.close();
+				//window.close();
 				options.start(optionsStage);
 			});
 		Button rulesButton = new Button("Rules");
