@@ -1,3 +1,5 @@
+import GUIpackage.*;
+
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,42 +25,30 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-public class MainScreen extends Application
-{
+public class MainScreen extends Application {
 	Stage window;
 	boolean answer;
-	
-	/*
-	 * This method is used to confirm the user's choice to quit.
-	 */
-	private void closeProgram() 
-	{
+
+	protected void closeProgram(Stage window) {
 		boolean answer = ConfirmBox.display();
-		if (answer) 
-		{
+		if (answer) {
 			window.close();
 			System.out.println("Closed");
 		}
 	}
 	
-	public static void main(String[] args) 
-	{
+	public static void main(String[] args) {
 		launch(args);
 	}
 	
-
-	public void start(Stage primaryStage)  
-	{
+	public void start(Stage primaryStage)  {
 		window = primaryStage;
 		PlayOptions options = new PlayOptions();
 		Stage optionsStage = new Stage();
-		window.setOnCloseRequest(e -> 
-		{
+		window.setOnCloseRequest(e -> {
 			e.consume();
-			closeProgram();
+			closeProgram(window);
 		});
-		
-		
 		Rules rules = new Rules();
 		Stage ruleStage = new Stage();
 		
@@ -68,32 +58,25 @@ public class MainScreen extends Application
 		//BUTTONS AND WHAT THEY DO
 
 		Button playButton = new Button("Let's Play!");
-		playButton.setOnAction(e ->
-			{
+		playButton.setOnAction(e ->	{
 				window.close();
 				options.start(optionsStage);
 			});
-		
 		Button rulesButton = new Button("Rules");
-		rulesButton.setOnAction(e ->
-			{
+		rulesButton.setOnAction(e -> {
 				rules.start(ruleStage);
 			});
-		
 		Button exitButton = new Button("Quit");
-		exitButton.setOnAction(e ->
-		{
-			closeProgram();
-			if(answer == true)
-			{
+		exitButton.setOnAction(e ->{
+			closeProgram(window);
+			if(answer == true) {
 				window.close();
 			}
 		});
-				
-				
+						
 		//mainScreen Display
 		StackPane mainScreenPane = new StackPane();
-		ImageView mainScreenBackground = new ImageView("/pictures/mainscreen.png");
+		ImageView mainScreenBackground = new ImageView("/src/GUIpackage/pictures/mainscreen.png");
 		mainScreenBackground.setFitHeight(600);
 		mainScreenBackground.setFitWidth(1000);
 		VBox mainScreenVBox = new VBox(20);
@@ -104,14 +87,6 @@ public class MainScreen extends Application
 	
 		window.setTitle("Sushi Go");
 		window.setScene(mainScreenScene);
-		window.show();
-			
-				
-		
-				
-				
-				
+		window.show();		
 	}
-
-
 }
