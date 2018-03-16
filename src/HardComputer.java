@@ -20,7 +20,7 @@ public class HardComputer extends Player {
 		this.hands = allHands;
 		this.numPlayers = allHands.length;
 	}
-	
+
 	/**
 	 *toString to return the player's name + id
 	 * @return PLAYER_NAME + player ID  	returns string value to identify the player object

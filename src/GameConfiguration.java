@@ -14,7 +14,8 @@ public class GameConfiguration {
 	private Player[] players; 
 	private LinkedList<String>[] hands;
 	private Deck deck;
-	
+	private int numPlayers;
+	private FinalScore scoreBoard;
 	
 	/**
 	*The GameConfiguration method creates the deck, the boards, an array of the player objects,
@@ -22,10 +23,12 @@ public class GameConfiguration {
 	*Takes in no parameters and does not return anything
 	*/
 	
-	public GameConfiguration(int mode, int numPlayers) {
+	public GameConfiguration(int mode, int numOfPlyrs) {
+		numPlayers = numOfPlyrs;
 		players = new Player[numPlayers];
 		deck = new Deck();
 		hands = deck.setHand(numPlayers);
+		scoreBoard = new FinalScore(players);
 		if(mode == 1) {
 			for(int count = 0; count < numPlayers; count++) {
 				players[count] = new Human(count);
@@ -46,12 +49,6 @@ public class GameConfiguration {
 		}
 	}
 	
-	public void newGame(int numPlayers) {
-		hands = deck.setHand(numPlayers);
-		for(int playerNum = 0; playerNum < numPlayers ; playerNum++) {
-			players[playerNum].resetBoard();
-		}
-	}
 	/**
 	*The getHand method returns a LinkedList of the hand depended on which hand number is specified
 	*@param handNum    the int value of the required hand
@@ -113,4 +110,65 @@ public class GameConfiguration {
 		    System.out.println(val + ":" + board.get(val));
 		}
 	}
+	
+	/**
+	 * play method iterates for how ever many cards are in each hand for each player (2-4)
+	 * after the player chooses a move, hands and boards are updated and displayed. 
+	 * after each round, the hands alternate by one. 
+	 * 
+	 * @param numPlayers   the number of players in the game to determine how many 
+	 * 			times to alternate hands and which players get which hands
+	 * @param game       the gameConfiguration object which contains all of the methods 
+	 * 					to play the game
+	 * 
+	 * uses for loop to check that all hands are empty, if true, breaks from loop.
+	 * 
+	 * then creates an instance of FinalScore to calculate the scores of the players after 10 rounds
+	 */
+	public void play() {
+		int handNum;
+		int turn = 0;
+		boolean gameEnd = false;
+		while(gameEnd == false) {
+			turn++;
+			for(int count = 0; count < numPlayers; count++) { //count is the player for which the methods are being called
+				handNum = turn % numPlayers; //turn % numPlayers is the value of the hand used. Each iteration increases turn by one, thus increasing handNum by 1
+				players[count].setPossibleMoves(hands[(count + handNum) % numPlayers]); //increases the value used by getHand() based on the player
+				this.displayHand(players[count], (count + handNum) % numPlayers);
+				players[count].move(turn);
+				this.updateHand(count, (count + handNum) % numPlayers);
+			}
+			for(int hand = 0; hand < numPlayers; hand++) {
+				if(this.getHand(hand).isEmpty())
+					gameEnd = true;
+				else {
+					gameEnd = false;
+				}
+			}
+		}
+		System.out.println("*********************************************************");
+		for(int x = 0; x < numPlayers; x++) {
+			this.displayBoard(players[x]);
+			System.out.println("*********************************************************");
+		}	
+		scoreBoard.calcScore();
+		for(int x = 0; x < numPlayers; x++) {
+			System.out.println("*********************************************************");
+			System.out.println(players[x].toString() + "'s score: " + players[x].getScore());
+		}
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

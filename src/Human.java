@@ -1,5 +1,3 @@
-import java.util.Hashtable;
-import java.util.LinkedList;
 import java.util.Scanner;
 /**
  * Class human is a subclass of Player.
@@ -19,6 +17,7 @@ public class Human extends Player {
 	public Human() {
 		super();
 	}
+	
 	public Human(int id) {
 		super(id + 1);
 	}

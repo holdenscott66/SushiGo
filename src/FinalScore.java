@@ -16,6 +16,7 @@ import java.util.*;
 public class FinalScore {
 	private Hashtable<String, Integer>[] boards;
 	Player[] players;
+	private int score;
 
 	/**
 	*The FinalScore constructor takes the players boards and creates an array of hashtables
@@ -26,8 +27,9 @@ public class FinalScore {
 	*		special card scores that rely on comparing boards
 	*/
 	
-	public FinalScore(GameConfiguration game) {
-		players = game.getPlayers();
+	@SuppressWarnings("unchecked")
+	public FinalScore(Player[] playerArray) {
+		players = playerArray;
 		boards = new Hashtable[players.length];
 	}
 	
@@ -42,14 +44,15 @@ public class FinalScore {
 		}
 		for (int playerNum = 0; playerNum < players.length; playerNum ++) {
 			Player player = players[playerNum];
-			dumplingScore(player);
-			sashimiScore(player);
-			tempuraScore(player);
-			wasabiNigiriScore(player);
-			nigiriScore(player);
-			puddingScore(player, playerNum);
-			makiRollScore(player, playerNum);
-			System.out.println(player.toString() + "'s score: " + player.getScore());
+			score = 0;
+			dumplingScore(boards[playerNum]);
+			sashimiScore(boards[playerNum]);
+			tempuraScore(boards[playerNum]);
+			wasabiNigiriScore(boards[playerNum]);
+			nigiriScore(boards[playerNum]);
+			puddingScore(boards[playerNum], playerNum);
+			makiRollScore(boards[playerNum], playerNum);
+			player.setScore(score);
 		}
 	}
 	
@@ -60,11 +63,11 @@ public class FinalScore {
 	*@param player    the player object for which the score is calculated
 	*/
 	
-	private void dumplingScore(Player player) {
-		int score = 0;
-		switch(player.getBoard().getOrDefault("Dumpling", 0)) {
+	private void dumplingScore(Hashtable<String, Integer> playerBoard) {
+		switch(playerBoard.getOrDefault("Dumpling", 0)) {
 		case 0:
 			score += 0;
+			break;
 		case 1:
 			score += 1;
 			break;
@@ -81,7 +84,6 @@ public class FinalScore {
 			score += 15;
 			break;
 		}
-		player.updateScore(score);
 	}
 	
 	/**
@@ -92,11 +94,9 @@ public class FinalScore {
 	*@param player    the player object for which the score is calculated
 	*/
 	
-	private void puddingScore(Player player, int playerNum) {
+	private void puddingScore(Hashtable<String, Integer> playerBoard, int playerNum) {
 		boolean mostPudding = true;
 		boolean leastPudding = true;
-		Hashtable<String, Integer> playerBoard = player.getBoard();
-		int score = 0;
 		for(int num = 0; num < boards.length; num++) {
 			if(playerNum != num) {
 				if(playerBoard.getOrDefault("Pudding", 0) > boards[num].getOrDefault("Pudding", 0))
@@ -119,11 +119,11 @@ public class FinalScore {
 		}
 		if(mostPudding == true && leastPudding == false)
 			score += 6;
+		
 		else if(mostPudding == false && leastPudding == true)
-			score -= 6;
+			score += -6;
 		else
 			score += 0;
-		player.updateScore(score);
 		
 	}
 	
@@ -135,10 +135,8 @@ public class FinalScore {
 	*@param player    the player object for which the score is calculated
 	*/
 	
-	private void makiRollScore(Player player, int playerNum) {
+	private void makiRollScore(Hashtable<String, Integer> playerBoard, int playerNum) {
 		boolean mostMaki = true;
-		int score = 0;
-		Hashtable<String, Integer> playerBoard = player.getBoard();
 		for(int num = 0; num < boards.length; num++) {
 			if(playerNum != num) {
 				if(playerBoard.getOrDefault("MakiRoll", 0) > boards[num].getOrDefault("MakiRoll", 0))
@@ -153,7 +151,6 @@ public class FinalScore {
 			score += 5;
 		else
 			score += 0;
-		player.updateScore(score);
 	}
 	
 	/**
@@ -163,10 +160,8 @@ public class FinalScore {
 	*@param player    the player object for which the score is calculated
 	*/
 	
-	private void sashimiScore(Player player) {
-		int score = 0;
-		score += (player.getBoard().getOrDefault("Sashimi", 0) / 3) * 10;
-		player.updateScore(score);
+	private void sashimiScore(Hashtable<String, Integer> playerBoard) {
+		score += (playerBoard.getOrDefault("Sashimi", 0) / 3 * 10);
 	}
 	
 	/**
@@ -176,10 +171,8 @@ public class FinalScore {
 	*@param player    the player object for which the score is calculated
 	*/
 	
-	private void tempuraScore(Player player) {
-		int score = 0;
-		score += (player.getBoard().getOrDefault("Tempura", 0) / 2) * 5;
-		player.updateScore(score);
+	private void tempuraScore(Hashtable<String, Integer> playerBoard) {
+		score += (playerBoard.getOrDefault("Tempura", 0) / 2) * 5;
 	}
 	
 	/**
@@ -189,13 +182,10 @@ public class FinalScore {
 	*@param player    the player object for which the score is calculated
 	*/
 	
-	private void nigiriScore(Player player) {
-		int score = 0;
-		score += (player.getBoard().getOrDefault("SquidNigiri", 0) * 3);
-		score += (player.getBoard().getOrDefault("SalmonNigiri", 0) * 2);
-		score += (player.getBoard().getOrDefault("EggNigiri", 0) * 1);
-		
-		player.updateScore(score);
+	private void nigiriScore(Hashtable<String, Integer> playerBoard) {
+		score += (playerBoard.getOrDefault("SquidNigiri", 0) * 3);
+		score += (playerBoard.getOrDefault("SalmonNigiri", 0) * 2);
+		score += (playerBoard.getOrDefault("EggNigiri", 0) * 1);
 	}
 	
 	/**
@@ -205,9 +195,7 @@ public class FinalScore {
 	*@param player    the player object for which the score is calculated
 	*/
 	
-	private void wasabiNigiriScore(Player player) {
-		Hashtable<String, Integer> playerBoard = player.getBoard();
-		int score = 0;
+	private void wasabiNigiriScore(Hashtable<String, Integer> playerBoard) {
 		while(playerBoard.getOrDefault("Wasabi", 0) > 0) {
 			if(playerBoard.getOrDefault("SquidNigiri", 0) > 0) {
 				score += 9;
@@ -227,9 +215,5 @@ public class FinalScore {
 			else
 				playerBoard.replace("Wasabi", 0);
 		}
-		for (String val : ((Hashtable<String,Integer>) playerBoard).keySet()) {
-		    System.out.println(val + ":" + playerBoard.get(val));
-		}
-		player.updateScore(score);
 	}
 }

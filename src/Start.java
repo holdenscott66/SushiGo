@@ -10,6 +10,7 @@ import java.util.*;
 public class Start {
 
 	private static Scanner user_input;
+	private static GameConfiguration G1;
 
 	public static void main(String[] args){
 		
@@ -41,7 +42,7 @@ public class Start {
         } while (players < 2 || players > 4);
         
 		
-        GameConfiguration G1 = new GameConfiguration(selection, players);
-        new GamePlay(G1);
+        G1 = new GameConfiguration(selection, players);
+        G1.play();
 	}
 }

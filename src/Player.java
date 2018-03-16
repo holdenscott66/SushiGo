@@ -43,8 +43,8 @@ public abstract class Player {
 		return board;
 	}
 
-	public void updateScore(int add) {
-		score += add;
+	public void setScore(int newScore) {
+		score = newScore;
 	}
 	
 	public void updateBoard() {
@@ -56,12 +56,12 @@ public abstract class Player {
 		}
 	}
 	
-	public void resetBoard() {
-		board = new Hashtable<String, Integer>();
+	public int getScore() {
+		return this.score;
 	}
 	
-	public int getScore() {
-		return score;
+	public void setBoard(Hashtable<String, Integer> newBoard) {
+		this.board = newBoard;
 	}
 	
 	protected void setCardPlayed(String card) {
