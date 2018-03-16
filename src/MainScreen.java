@@ -73,7 +73,7 @@ public class MainScreen extends Application {
 						
 		//mainScreen Display
 		StackPane mainScreenPane = new StackPane();
-		ImageView mainScreenBackground = new ImageView("/pictures/mainscreen.png");
+		ImageView mainScreenBackground = new ImageView("/GUIpackage/pictures/mainscreen.png");
 		mainScreenBackground.setFitHeight(600);
 		mainScreenBackground.setFitWidth(1000);
 		VBox mainScreenVBox = new VBox(20);
