@@ -26,7 +26,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-public class PVPOptions extends MainScreen {
+public class PVPOptions{
 	Stage window;
 	private GameConfiguration game;
 
@@ -47,7 +47,7 @@ public class PVPOptions extends MainScreen {
 		Button twoPlayers = new Button("Two Players");
 		window.setOnCloseRequest(e -> {
 			e.consume();
-			closeProgram(window);
+			window.close();
 		});
 		
 		twoPlayers.setOnAction(e -> {

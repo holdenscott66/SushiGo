@@ -35,50 +35,38 @@ import javafx.scene.control.Label;
 	import javafx.scene.paint.*;
 	
 	 
-public class Rules extends MainScreen
-{
-		public static void main(String[] args) 
-		{
-			launch(args);
-		}
-		private GameConfiguration game;
-		private Player[ ] players;
-		
-		public void start(Stage primaryStage) 
-		{
-			
-			Stage window = primaryStage;
-		
-			
-			
-			
-					
-					
-					Button quitRulesButton = new Button("Close Rules");
-					quitRulesButton.setOnAction(e -> 
-					
-					{
-							window.close();
-					});
-					
-					
-					//RULES Display
-				
-				
-					StackPane mainScreenPane = new StackPane();
-					ImageView mainScreenBackground = new ImageView("/pictures/rules.jpeg");
-					mainScreenBackground.setFitHeight(600);
-					mainScreenBackground.setFitWidth(1000);
-					VBox mainScreenVBox = new VBox(20);
-					mainScreenVBox.setAlignment(Pos.CENTER);
-					mainScreenVBox.getChildren().add(quitRulesButton);
-					mainScreenPane.getChildren().addAll(mainScreenBackground, mainScreenVBox);
-					Scene mainScreenScene = new Scene(mainScreenPane, 1000,600);
-					
-					window.setTitle("Sushi Go Rules");
-					window.setScene(mainScreenScene);
-					window.show();
-	}
+public class Rules{
+	private GameConfiguration game;
+	private Player[ ] players;
 	
-
+	public void start(Stage primaryStage) 
+	{
+		
+		Stage window = primaryStage;
+	
+		Button quitRulesButton = new Button("Close Rules");
+		quitRulesButton.setOnAction(e -> 
+		
+		{
+				window.close();
+		});
+		
+		
+		//RULES Display
+	
+	
+		StackPane mainScreenPane = new StackPane();
+		ImageView mainScreenBackground = new ImageView("/pictures/rules.jpeg");
+		mainScreenBackground.setFitHeight(600);
+		mainScreenBackground.setFitWidth(1000);
+		VBox mainScreenVBox = new VBox(20);
+		mainScreenVBox.setAlignment(Pos.CENTER);
+		mainScreenVBox.getChildren().add(quitRulesButton);
+		mainScreenPane.getChildren().addAll(mainScreenBackground, mainScreenVBox);
+		Scene mainScreenScene = new Scene(mainScreenPane, 1000,600);
+		
+		window.setTitle("Sushi Go Rules");
+		window.setScene(mainScreenScene);
+		window.show();
+	}
 }

@@ -27,7 +27,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-public class PlayOptions extends MainScreen {
+public class PlayOptions{
 	Stage window;
 	Scene playOptionsScene;
 
@@ -39,7 +39,6 @@ public class PlayOptions extends MainScreen {
 		Stage easyAIStage = new Stage();
 		HardAI hardAI = new HardAI();
 		Stage hardAIStage = new Stage();
-		MainScreen main = new MainScreen();
 		Stage mainStage = new Stage();
 		
 	//buttons for Selection

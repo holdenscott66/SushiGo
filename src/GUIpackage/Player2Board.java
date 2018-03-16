@@ -25,7 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-public class Player2Board extends MainScreen {
+public class Player2Board{
 	Stage window;
 	ArrayList<String> board;
 	

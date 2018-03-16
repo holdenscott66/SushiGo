@@ -26,7 +26,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-public class PlayScreen extends MainScreen {
+public class PlayScreen {
 	Stage window;
 	GameConfiguration game;
 	static Hashtable<String, Integer> player1Board;
@@ -201,7 +201,7 @@ public class PlayScreen extends MainScreen {
 		Stage boardStage2 = new Stage();
 		window.setOnCloseRequest(e -> {
 			e.consume();
-			closeProgram(window);
+			window.close();
 		});
 ////////////////////////////////////////////////////////////////////////////		
 		//Buttons

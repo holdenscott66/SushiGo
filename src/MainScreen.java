@@ -51,9 +51,6 @@ public class MainScreen extends Application {
 		});
 		Rules rules = new Rules();
 		Stage ruleStage = new Stage();
-		
-		//FinalScore finalScore = new FinalScore();
-		//Stage finalScoreStage = new Stage();
 	
 		//BUTTONS AND WHAT THEY DO
 
@@ -76,7 +73,7 @@ public class MainScreen extends Application {
 						
 		//mainScreen Display
 		StackPane mainScreenPane = new StackPane();
-		ImageView mainScreenBackground = new ImageView("/src/GUIpackage/pictures/mainscreen.png");
+		ImageView mainScreenBackground = new ImageView("/pictures/mainscreen.png");
 		mainScreenBackground.setFitHeight(600);
 		mainScreenBackground.setFitWidth(1000);
 		VBox mainScreenVBox = new VBox(20);
