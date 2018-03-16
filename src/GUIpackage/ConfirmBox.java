@@ -40,7 +40,7 @@ public class ConfirmBox {
 		window.close();
 		});
 		StackPane displayPane = new StackPane();
-		ImageView displayBackground = new ImageView("/pictures/areyousure.jpg");
+		ImageView displayBackground = new ImageView("/GUIpackage/pictures/areyousure.jpg");
 		displayBackground.setFitWidth(328);
 		displayBackground.setFitHeight(294);
 		VBox layout = new VBox(10);
@@ -75,7 +75,7 @@ public class ConfirmBox {
 		window.close();
 		});
 		StackPane displayPane = new StackPane();
-		ImageView displayBackground = new ImageView("/pictures/quit.jpg");
+		ImageView displayBackground = new ImageView("/GUIpackage/pictures/quit.jpg");
 		displayBackground.setFitWidth(657);
 		displayBackground.setFitHeight(588);
 		VBox layout = new VBox(10);
@@ -99,7 +99,7 @@ public class ConfirmBox {
 			window.close();
 		});
 		StackPane displayPane = new StackPane();
-		ImageView displayBackground = new ImageView("/pictures/quit.jpg");
+		ImageView displayBackground = new ImageView("/GUIpackage/pictures/quit.jpg");
 		displayBackground.setFitWidth(657);
 		displayBackground.setFitHeight(588);
 		VBox layout = new VBox(10);

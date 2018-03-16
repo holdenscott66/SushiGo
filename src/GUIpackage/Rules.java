@@ -56,7 +56,7 @@ public class Rules{
 	
 	
 		StackPane mainScreenPane = new StackPane();
-		ImageView mainScreenBackground = new ImageView("/pictures/rules.jpeg");
+		ImageView mainScreenBackground = new ImageView("/GUIpackage/pictures/rules.jpeg");
 		mainScreenBackground.setFitHeight(600);
 		mainScreenBackground.setFitWidth(1000);
 		VBox mainScreenVBox = new VBox(20);

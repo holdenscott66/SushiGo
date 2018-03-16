@@ -58,7 +58,7 @@ public class PVPOptions{
 		});
 
 		StackPane playerPane = new StackPane();
-		ImageView selectionBackground = new ImageView("/pictures/player.png");
+		ImageView selectionBackground = new ImageView("/GUIpackage/pictures/player.png");
 		selectionBackground.setFitWidth(1000);
 		selectionBackground.setFitHeight(600);
 		VBox playerVBox = new VBox(20);

@@ -25,7 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-public class Player1Board extends MainScreen{
+public class Player1Board {
 	
 	Stage window;
 	ArrayList<String> board;
@@ -38,7 +38,7 @@ public class Player1Board extends MainScreen{
 		back.setOnAction(e -> window.close());
 		//Display
 		StackPane player1BoardStackPane = new StackPane();
-		ImageView player1BoardBackground = new ImageView("/pictures/board.jpg");
+		ImageView player1BoardBackground = new ImageView("/GUIpackage/pictures/board.jpg");
 		player1BoardBackground.setFitHeight(600);
 		player1BoardBackground.setFitWidth(1000);
 		HBox boardBox = new HBox(5);
@@ -48,7 +48,7 @@ public class Player1Board extends MainScreen{
 		board = Player1Turn.getBoardOfStrings();
 		if(board.size() > 0) {
 			for(int card = 0; card <board.size(); card++) {
-				ImageView boardCard = new ImageView("/pictures/" + board.get(card) +".png");
+				ImageView boardCard = new ImageView("/GUIpackage/pictures/" + board.get(card) +".png");
 				boardCard.setFitHeight(100);
 				boardCard.setFitWidth(75);
 				boardBox.getChildren().add(boardCard);

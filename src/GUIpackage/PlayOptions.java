@@ -66,7 +66,7 @@ public class PlayOptions{
 		
 		//PlayOptions Display
 		StackPane playOptionsPane = new StackPane();
-		ImageView playOptionsBackground = new ImageView("/pictures/Background.jpg");
+		ImageView playOptionsBackground = new ImageView("/GUIpackage/pictures/Background.jpg");
 		playOptionsBackground.setFitWidth(1000);
 		playOptionsBackground.setFitHeight(600);
 		VBox playOptionsScreenVBox = new VBox(20);

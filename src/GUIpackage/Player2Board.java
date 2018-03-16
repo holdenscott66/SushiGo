@@ -37,7 +37,7 @@ public class Player2Board{
 		back.setOnAction(e ->window.close());
 		//Display
 		StackPane player2BoardStackPane = new StackPane();
-		ImageView player2BoardBackground = new ImageView("/pictures/board.jpg");
+		ImageView player2BoardBackground = new ImageView("/GUIpackage/pictures/board.jpg");
 		player2BoardBackground.setFitHeight(600);
 		player2BoardBackground.setFitWidth(1000);
 		HBox boardBox = new HBox(5);
@@ -47,7 +47,7 @@ public class Player2Board{
 		board = Player2Turn.getBoardOfStrings();
 		if(board.size() > 0) {
 			for(int card = 0; card <board.size(); card++) {
-				ImageView boardCard = new ImageView("/pictures/" + board.get(card) +".png");
+				ImageView boardCard = new ImageView("/GUIpackage/pictures/" + board.get(card) +".png");
 				boardCard.setFitHeight(100);
 				boardCard.setFitWidth(75);
 				boardBox.getChildren().add(boardCard);

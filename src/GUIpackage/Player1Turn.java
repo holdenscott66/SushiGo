@@ -24,7 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
-public class Player1Turn extends MainScreen{
+public class Player1Turn {
 	Stage window;
 	LinkedList<Button> hand;
 	HBox player1Hbox = new HBox(5);
@@ -119,7 +119,7 @@ public class Player1Turn extends MainScreen{
 ////////////////////////////////////////////////////////////////////////////
 	//Display
 	StackPane player1Pane = new StackPane();
-	ImageView player1Background = new ImageView("/pictures/player1.jpg");
+	ImageView player1Background = new ImageView("/GUIpackage/pictures/player1.jpg");
 	player1Background.setFitHeight(600);
 	player1Background.setFitWidth(1000);
 	player1Hbox.setAlignment(Pos.BOTTOM_CENTER);

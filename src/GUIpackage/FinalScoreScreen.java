@@ -9,7 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class FinalScoreScreen extends PlayScreen {
+public class FinalScoreScreen {
 
 	Stage window;
 	Scene finalScoreScene;
@@ -20,12 +20,12 @@ public class FinalScoreScreen extends PlayScreen {
 	
 	public void start(Stage primaryStage) {
 		window = primaryStage;
-		MainScreen main = new MainScreen();
-		Stage mainStage = new Stage();
+		//MainScreen main = new MainScreen();
+		//Stage mainStage = new Stage();
 		
 		window.setOnCloseRequest(e -> {
 			e.consume();
-			closeProgram(window);
+			//closeProgram(window);
 		});
 		PlayScreen againAndAgain = new PlayScreen();
 		Stage twoStage = new Stage();
@@ -43,7 +43,7 @@ public class FinalScoreScreen extends PlayScreen {
 //			scoreBoard.makiRollScore(getPlayer1Board(), 0);
 			System.out.println(score);
 			window.close();
-			main.start(mainStage);
+			//main.start(mainStage);
 		});
 		Button playRightAway = new Button ("I NEED TO PLAY AGAIN NOW");
 		playRightAway.setOnAction(e -> {
@@ -53,7 +53,7 @@ public class FinalScoreScreen extends PlayScreen {
 			System.out.println(players[0].getScore());
 		});
 		//Button player1Score = new Button("Player 1:" + );
-		ImageView background = new ImageView("/pictures/playagain.jpg");
+		ImageView background = new ImageView("/GUIpackage/pictures/playagain.jpg");
 		background.setFitHeight(600);
 		background.setFitWidth(1000);
 		//Score Display

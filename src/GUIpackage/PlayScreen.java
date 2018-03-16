@@ -66,14 +66,14 @@ public class PlayScreen {
 	}
 	
 	public ImageView getBackground() {
-		ImageView Background = new ImageView("/pictures/Background.jpg");
+		ImageView Background = new ImageView("/GUIpackage/pictures/Background.jpg");
 		Background.setFitWidth(1000);
 		Background.setFitHeight(600);
 		return Background;
 	}
 	
 	public ImageView getCard(int hand, int card) {
-		ImageView cardImage = new ImageView("/pictures/" + game.getHand(hand).get(card) + ".png");
+		ImageView cardImage = new ImageView("/GUIpackage/pictures/" + game.getHand(hand).get(card) + ".png");
 		cardImage.setFitHeight(100);;
 		cardImage.setFitWidth(75);
 		return cardImage;	

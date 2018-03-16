@@ -139,7 +139,7 @@ public class Player2Turn {
 ////////////////////////////////////////////////////////////////////////////
 		//Display
 		StackPane player2Pane = new StackPane();
-		ImageView player2Background = new ImageView("/pictures/player2.jpg");
+		ImageView player2Background = new ImageView("/GUIpackage/pictures/player2.jpg");
 		player2Background.setFitHeight(600);
 		player2Background.setFitWidth(1000);
 		player2Hbox.setAlignment(Pos.TOP_CENTER);
