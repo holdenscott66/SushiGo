@@ -131,9 +131,10 @@ public class FinalScore {
 	/**
 	*The method makiRollScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*compares the player's board to all of the boards in the Array boards. 
-	*calls method player.updateScore(score) to update the player object's score based on the number of points
-	*@param player    the player object for which the score is calculated
+	*compares the player's board to all of the boards in the Array boards with the exception of its own. 
+	*updates value of score accordingly
+	*@param playerBoard   the player's board for which the score is calculated
+	*@param playerNum   int value of the player used to ensure it doesnt compare its own board. 
 	*/
 	
 	private void makiRollScore(Hashtable<String, Integer> playerBoard, int playerNum) {
@@ -157,8 +158,8 @@ public class FinalScore {
 	/**
 	*The method sashimiScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*calls method player.updateScore(score) to update the player object's score based on the number of points
-	*@param player    the player object for which the score is calculated
+	*
+	*@param playerBoard   the player's board for which the score is calculated
 	*/
 	
 	private void sashimiScore(Hashtable<String, Integer> playerBoard) {
@@ -168,8 +169,8 @@ public class FinalScore {
 	/**
 	*The method tempuraScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*calls method player.updateScore(score) to update the player object's score based on the number of points
-	*@param player    the player object for which the score is calculated
+	*
+	*@param playerBoard   the player's board for which the score is calculated
 	*/
 	
 	private void tempuraScore(Hashtable<String, Integer> playerBoard) {
@@ -179,8 +180,8 @@ public class FinalScore {
 	/**
 	*The method nigiriScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*calls method player.updateScore(score) to update the player object's score based on the number of points
-	*@param player    the player object for which the score is calculated
+	*
+	*@param playerBoard   the player's board for which the score is calculated
 	*/
 	
 	private void nigiriScore(Hashtable<String, Integer> playerBoard) {
@@ -192,8 +193,8 @@ public class FinalScore {
 	/**
 	*The method wasabiNigiriScore sets the specific conditions for dumpling card combinations  
 	*that are necessary for the specific card on the board to accrue points
-	*calls method player.updateScore(score) to update the player object's score based on the number of points
-	*@param player    the player object for which the score is calculated
+	*
+	*@param playerBoard   the player's board for which the score is calculated
 	*/
 	
 	private void wasabiNigiriScore(Hashtable<String, Integer> playerBoard) {

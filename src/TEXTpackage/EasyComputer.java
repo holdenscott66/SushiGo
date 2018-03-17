@@ -17,10 +17,17 @@ public class EasyComputer extends Player{
 		super(id + 1);
 	}
 	
+	/**
+	 *@return    returns string value of the PLAYER_NAME and ID
+	 */
 	public String toString() {
 		return PLAYER_NAME + super.getID();
 	}
-	
+	/**
+	 * generated random number based on the length of the possible moves, 
+	 * selectes card from hand based on random number
+	 * @param int turn     does not affect the move in the EasyCimputer class
+	 */
 	public void move(int turn) {
 		randNum = new Random();
 		int cardNum = randNum.nextInt(super.getPossibleMoves().size());

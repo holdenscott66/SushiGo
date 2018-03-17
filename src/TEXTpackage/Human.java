@@ -1,4 +1,5 @@
 package TEXTpackage;
+import java.util.Hashtable;
 import java.util.Scanner;
 /**
  * Class human is a subclass of Player.
@@ -23,6 +24,14 @@ public class Human extends Player {
 		super(id + 1);
 	}
 	
+	public Human(Hashtable<String, Integer> playerBoard, int playerNumber)
+	{
+		super(playerBoard,playerNumber);
+		
+	}
+	
+
+	
 	/**
 	 * toString to return the player's name + id
 	 * @return PLAYER_NAME + player ID  	returns string value to identify the player object
@@ -32,7 +41,8 @@ public class Human extends Player {
 	}
 	/**
 	 * takes no parameters, and prompts user for input. 
-	 * if selection is valid, it is removed from the hand and added to the player's board.
+	 * if selection is valid, it is removed from the hand and added to the player's board 
+	 * via super.setCardPlayed() and super.updateBoard()
 	 */
 	public void move(int turn) {
 		user_input = new Scanner(System.in);

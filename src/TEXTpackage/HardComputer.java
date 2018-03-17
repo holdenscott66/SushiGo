@@ -30,6 +30,13 @@ public class HardComputer extends Player {
 		return PLAYER_NAME + super.getID();
 	}
 	
+	/**
+	 * uses switch and if statements to choose cards based on the cards in all of the hands, and its own hand
+	 * uses basic strategy for choosin cards with highest pay off early on
+	 * and chooses cards only with a high likely hood of guaranteeing points
+	 * @param   the value of turn affects which switch statement will be used. Depending 
+	 * how far in the game it is, different moves are selected 
+	 */
 	public void move(int turn) {
 		updateHands();
 		LinkedList<String> currentHand = super.getPossibleMoves();
@@ -319,6 +326,11 @@ public class HardComputer extends Player {
 			
 	}
 	
+	/**
+	 * update hands takes no parameters and returns nothing
+	 * used to update the hashtable contains all of the hands being used
+	 * so that the computer can continuously choose the best options
+	 */
 	private void updateHands() {
 		this.allCards = new Hashtable<String, Integer>();
 		for(int handNum = 0; handNum < hands.length; handNum++) {

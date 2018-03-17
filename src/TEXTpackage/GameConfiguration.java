@@ -122,9 +122,10 @@ public class GameConfiguration {
 	 * @param game       the gameConfiguration object which contains all of the methods 
 	 * 					to play the game
 	 * 
-	 * uses for loop to check that all hands are empty, if true, breaks from loop.
+	 * uses while loop to iterate through players turns while the gameEnd variable is false
+	 * checks length of hand each iteration, when the length in every hand is 0, breaks from loop
 	 * 
-	 * then creates an instance of FinalScore to calculate the scores of the players after 10 rounds
+	 * then calls scoreBoard.calcScore(); to calculate the score 
 	 */
 	public void play() {
 		int handNum;
