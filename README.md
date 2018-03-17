@@ -19,20 +19,23 @@ https://www.eclipse.org/downloads/download.php?file=/oomph/epp/oxygen/R2/eclipse
 
 Once these two are downloaded, install them on your computer.
 Open Eclipse and hit File > New > Java Project
-Set the Project name to SushiGO and change the location to the folder that contains all the files from game.zip.
-Then open the GUI.java in eclipse and run it.
+Set the Project name to SushiGO and change the location to the folder that contains all the files from the zip file
+Then open the GUI.java in eclipse and run either from the MainScreen.java or Start.java to start the GUI version and 
+text-based version respectively.
 
-We create boards for our humans with all our types of cards here and we check through our scoring method if it follows the rules of the game. We decided to write a tests on this because it's the most important part of our game. You should be rewarded accurately with the cards that you placed on the board. Through these tests we are able to see the accuracy of our scoring method and to see if it works correctly. We have a test for each of our 9 cards.
+TESTING
+In regards to testing, we focused on testing our FinalScore.java file to make sure that the scoring was done correctly.
+Seeing as the whole point of the game is to win by having the highest points, that was the most important class to test.
+
+For our tests we created boards for our humans using a combination of all our types of cards and calculate the score manually and test it against our scoring method. We have a test for each of our 9 cards.
 
 For example, in our Pudding test. We create two new Humans and add Puddings into their respective board. We add one for player1 and 0 for player2. According to the rules of the game, if you have less pudding then the other player. You get deducted 6 points.
 
-
-
 Contributing
-//
+//We would like to thank the country of Japan for creating Sushi.
 
 Versioning
-//
+// This version is currently Beta version 3.
 
 Authors
 Cyrus Rodriguez
@@ -42,7 +45,8 @@ Peter Namkoong
 Scott Holden
 
 License
-//
+//This is purely a school project, so we did not look for any licensing. We do not claim that the game Sushi GO! was created by us,
+we merely emulated it as a test of our skill.
 
 Acknowledgments
 Hat's off to the game Sushi Go! for making a game fun enough to emulate so we can play anywhere, anytime, without cards!
