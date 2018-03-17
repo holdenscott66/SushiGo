@@ -47,7 +47,7 @@ public class MainScreen extends Application {
 		Stage optionsStage = new Stage();
 		window.setOnCloseRequest(e -> {
 			e.consume();
-			closeProgram(window);
+			ConfirmBox.closeProgram(window);
 		});
 		Rules rules = new Rules();
 		Stage ruleStage = new Stage();
@@ -56,7 +56,7 @@ public class MainScreen extends Application {
 
 		Button playButton = new Button("Let's Play!");
 		playButton.setOnAction(e ->	{
-				//window.close();
+				window.close();
 				options.start(optionsStage);
 			});
 		Button rulesButton = new Button("Rules");
