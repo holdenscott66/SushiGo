@@ -28,11 +28,17 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
 public class PlayOptions{
+	static Boolean answer;
+	static Boolean choice;
 	Stage window;
 	Scene playOptionsScene;
 
 	public void start(Stage primaryStage) {
 		window = primaryStage;
+		window.setOnCloseRequest(e -> {
+			e.consume();
+			ConfirmBox.closeProgram(window);
+		});
 		PVPOptions pvp = new PVPOptions();
 		Stage pvpStage = new Stage();
 		EasyAI easyAI = new EasyAI();

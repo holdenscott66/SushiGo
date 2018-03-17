@@ -27,27 +27,38 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
 public class PVPOptions{
+	static Boolean answer;
+	static Boolean choice;
 	Stage window;
+	PlayScreen playGame;
+	Stage playStage; 
 	private GameConfiguration game;
 
 	public void setGame(GameConfiguration gameType) {
 		this.game = gameType;
 	}
 	
+
 	public GameConfiguration getGame() {
 		return game;
 	}
 
+
 	public void start(Stage primaryStage) {
 		window = primaryStage;
+		window.setOnCloseRequest(e -> {
+			e.consume();
+			ConfirmBox.closeProgram(window);
+		});
 		PlayScreen playGame = new PlayScreen();
 		Stage playStage = new Stage();
-		
+	
 		//Buttons
 		Button twoPlayers = new Button("Two Players");
 		window.setOnCloseRequest(e -> {
 			e.consume();
 			window.close();
+			
 		});
 		
 		twoPlayers.setOnAction(e -> {
@@ -55,6 +66,10 @@ public class PVPOptions{
 			playGame.start(playStage);
 			
 			window.close();
+			//playGame.resetGameVariables();
+			playGame.resetGame(1,2);
+			
+			
 		});
 
 		StackPane playerPane = new StackPane();

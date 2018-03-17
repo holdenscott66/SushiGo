@@ -26,13 +26,18 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
 public class Player1Board {
+	static Boolean answer;
+	static Boolean choice;
 	
 	Stage window;
 	ArrayList<String> board;
 	
 	public void start(Stage primaryStage) {
 		window = primaryStage;
-		
+		window.setOnCloseRequest(e -> {
+			e.consume();
+			ConfirmBox.closeProgram(window);
+		});
 		//Button
 		Button back = new Button("Back");
 		back.setOnAction(e -> window.close());

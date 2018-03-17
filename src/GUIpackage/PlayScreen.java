@@ -41,6 +41,22 @@ public class PlayScreen {
 	boolean lockPlayer1;
 	boolean lockPlayer2;
 	boolean endGame;
+	public static Human player1;
+	public static Human player2;
+	static Boolean answer;
+	static Boolean choice;
+	
+	public static void resetGameVariables()
+	{
+		player1Board = new Hashtable<String, Integer>();
+		player2Board = new Hashtable<String, Integer>();
+		hand1 = new LinkedList<Button>();
+		hand2 = new LinkedList<Button>();
+		player1turn = 0;
+		player2turn = 0;
+		
+	}
+	
 	public static int getPlayer1TurnCount() {
 		return player1turn;
 	}
@@ -64,6 +80,11 @@ public class PlayScreen {
 	public void setGame(int gameMode, int players) {
 		this.game = new GameConfiguration(gameMode,players);
 	}
+	
+	public void resetGame(int newGame, int newPlayers)
+	{
+		this.game = new GameConfiguration(newGame, newPlayers);
+	} 
 	
 	public ImageView getBackground() {
 		ImageView Background = new ImageView("/GUIpackage/pictures/Background.jpg");
@@ -158,6 +179,7 @@ public class PlayScreen {
 	public void endGame() {
 		int totalTurns = player1turn + player2turn;
 		if(totalTurns == 20) {
+			
 			endGame = true;
 		}
 	}
@@ -185,8 +207,34 @@ public class PlayScreen {
 		return lockPlayer2;	
 	}
 	
+	public Human createHumanPlayer1()
+	{
+		player1 = new Human(getPlayer1Board(), 1);
+		return player1;
+	}
+	
+	public Human createHumanPlayer2()
+	{
+		player2 = new Human(getPlayer2Board(), 2);
+		return player2;
+	}
+	
+	public static Human getPlayer1()
+	{
+		return player1;
+	}
+	
+	public static Human getPlayer2()
+	{
+		return player2;
+	}
+	
 	public void start(Stage primaryStage) {
 		window = primaryStage;
+		window.setOnCloseRequest(e -> {
+			e.consume();
+			ConfirmBox.closeProgram(window);
+		});
 		Player1Turn player1 = new Player1Turn();
 		Player2Turn player2 = new Player2Turn();
 		Stage player1Stage = new Stage();
@@ -217,8 +265,18 @@ public class PlayScreen {
 		finalScoreButton.setOnAction(e -> {
 			endGame();
 			if(endGame == true) {	
+				
+				createHumanPlayer1();
+				createHumanPlayer2();
+				System.out.println("You've reached this part of the code if the game is over. The human player 1 is : " +player1);
+				System.out.println("You've reached this part of the code if the game is over. The human player 2 is : " +player2);
+				
+			
+				
+				
 				finalScore.start(finalStage);
 				window.close();
+//				resetGameVariables();
 			}
 			else {
 				finalScoreButton.isDisabled();
@@ -285,7 +343,13 @@ public class PlayScreen {
 		//Set hands
 		setHand1();
 		setHand2();
-
-	}
+		//Test Humans
+//		createHumanPlayer1();
+//		createHumanPlayer2();
+//		System.out.println(player1);
+//		System.out.println(player2);
+//
+//	}
 }	
+}
 	

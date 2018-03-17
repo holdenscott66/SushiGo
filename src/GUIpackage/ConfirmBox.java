@@ -18,6 +18,16 @@ public class ConfirmBox {
 	static Boolean answer;
 	static Boolean choice;
 	
+	
+	public static void closeProgram(Stage window) {
+		answer = ConfirmBox.display();
+		if (answer) {
+			window.close();
+			System.out.println("Closed");
+		}
+	}
+	
+	
 	public static boolean choiceCard() {
 		Stage window = new Stage();
 		

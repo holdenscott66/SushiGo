@@ -25,6 +25,8 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 public class Player1Turn {
+	static Boolean answer;
+	static Boolean choice;
 	Stage window;
 	LinkedList<Button> hand;
 	HBox player1Hbox = new HBox(5);
@@ -50,20 +52,21 @@ public class Player1Turn {
 //			System.out.println("The specific cards in Player 1 hand are: " + hand.get(j).getText());
 //		}	
 	}
+	
 	public void setHandButtons(LinkedList<Button> currentHand) {
 		for(int card = 0; card < currentHand.size(); card++) {
 			player1Hbox.getChildren().add(hand.get(card));
 			currentHand.get(card).setOnAction(e -> {
-				//boolean answer = ConfirmBox.choiceCard();
-				//if (answer) {
+				boolean answer = ConfirmBox.choiceCard();
+				if (answer) {
 					String cardPlayed = ((Button)(e.getSource())).getText();
 					Button buttonPlayed = ((Button)(e.getSource()));
 					boardOfStrings.add(cardPlayed);
 					//quick test to print out your board as strings
-					for(int i = 0; i <boardOfStrings.size(); i++) {
-						System.out.println("PLAYER 1 This is your current board as Strings: " +boardOfStrings.get(i));	
-					}
-					
+//					for(int i = 0; i <boardOfStrings.size(); i++) {
+//						System.out.println("PLAYER 1 This is your current board as Strings: " +boardOfStrings.get(i));	
+//					}
+//					
 //					//Quick test to show list of cards before and after removing the card
 //					System.out.println("This is the list of cards before you removed this button");
 //					for(int i = 0; i < hand.size(); i++)
@@ -102,6 +105,7 @@ public class Player1Turn {
 						player1Hbox.getChildren().remove(hand.get(allButtons));
 					}
 					window.close();
+				}
 			});
 		}		
 	}
