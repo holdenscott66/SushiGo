@@ -22,23 +22,10 @@ Open Eclipse and hit File > New > Java Project
 Set the Project name to SushiGO and change the location to the folder that contains all the files from game.zip.
 Then open the GUI.java in eclipse and run it.
 
+We create boards for our humans with all our types of cards here and we check through our scoring method if it follows the rules of the game. We decided to write a tests on this because it's the most important part of our game. You should be rewarded accurately with the cards that you placed on the board. Through these tests we are able to see the accuracy of our scoring method and to see if it works correctly. We have a test for each of our 9 cards.
 
-Running the tests
-Explain how to run the automated tests for this system
+For example, in our Pudding test. We create two new Humans and add Puddings into their respective board. We add one for player1 and 0 for player2. According to the rules of the game, if you have less pudding then the other player. You get deducted 6 points.
 
-Break down into end to end tests
-Explain what these tests test and why
-
-Give an example
-And coding style tests
-Explain what these tests test and why
-
-Give an example
-Deployment
-Add additional notes about how to deploy this on a live system
-
-Built With
-Java Programming Language
 
 
 Contributing
